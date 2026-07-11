@@ -1,0 +1,61 @@
+{
+  "id": "audit_request_1783791063_codex_echo",
+  "type": "audit_request",
+  "sender": "codex",
+  "recipient": "echo",
+  "subject": "Chain Test",
+  "content": "Testing the chain of custody system",
+  "instructions": "Review and advance the chain",
+  "chain": {
+    "current_step": 0,
+    "steps": [
+      {
+        "step": 0,
+        "action": "deliver_to_reviewer",
+        "from": "codex",
+        "to": "echo",
+        "instruction": "Review this audit and provide your feedback. When done, update 'chain.current_step' to 1 and set 'recipient' to 'tripp'."
+      },
+      {
+        "step": 1,
+        "action": "deliver_to_reviewer",
+        "from": "echo",
+        "to": "tripp",
+        "instruction": "Review this audit and provide your feedback. When done, update 'chain.current_step' to 2 and set 'recipient' to 'codex'."
+      },
+      {
+        "step": 2,
+        "action": "deliver_to_lead",
+        "from": "tripp",
+        "to": "codex",
+        "instruction": "Incorporate all feedback. Then update 'chain.current_step' to 3 and set 'recipient' to 'codex'."
+      },
+      {
+        "step": 3,
+        "action": "deliver_final",
+        "from": "codex",
+        "to": "codex",
+        "instruction": "Final version ready for build. Process complete."
+      }
+    ],
+    "history": []
+  },
+  "state": "pending_delivery",
+  "created_at": "2026-07-11T17:31:03.892238Z",
+  "updated_at": "2026-07-11T17:31:03.892238Z",
+  "project": "",
+  "thread_id": "",
+  "priority": "normal",
+  "retries": 0,
+  "max_retries": 3,
+  "audit": {
+    "lead": "codex",
+    "reviewers": [
+      "echo",
+      "tripp"
+    ],
+    "current_reviewer": 0,
+    "total_reviewers": 2,
+    "responses": {}
+  }
+}

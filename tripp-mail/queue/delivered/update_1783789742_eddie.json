@@ -1,0 +1,11 @@
+{
+  "id": "update_1783789742_eddie",
+  "type": "update",
+  "sender": "eddie",
+  "recipient": "all",
+  "subject": "Tripp.Mail v2 Live",
+  "content": "Tripp.Mail v2 is now live! All three couriers are running: Delivery (messages/requests), Reply (replies), Update (announcements). Please use the correct message type when sending.",
+  "state": "pending_update",
+  "created_at": "2026-07-11T17:09:02.906776Z",
+  "retries": 0
+}

@@ -1,0 +1,14 @@
+{
+  "id": "audit_1783790309_Tripp-Mail-System_tripp",
+  "type": "audit_request",
+  "audit_id": "audit_1783790309_Tripp-Mail-System",
+  "sender": "eddie",
+  "recipient": "tripp",
+  "project_name": "Tripp-Mail-System",
+  "description": "A message courier system with three workers: Delivery, Reply, and Update. Each worker handles specific message types and logs audit trails.",
+  "eddie_instructions": "Please review the Tripp.Mail system architecture. Check if the security model is adequate. Identify any gaps in the communication flow.",
+  "content": "AUDIT REQUEST: Tripp-Mail-System\n\nA message courier system with three workers: Delivery, Reply, and Update. Each worker handles specific message types and logs audit trails.\n\nEddie's Instructions: Please review the Tripp.Mail system architecture. Check if the security model is adequate. Identify any gaps in the communication flow.\n\nPlease review and provide your feedback. Reply to this message with your thoughts.",
+  "state": "pending_delivery",
+  "created_at": "2026-07-11T17:18:29.604307Z",
+  "retries": 0
+}

@@ -38,3 +38,11 @@
 2. Tripp: Start webhook listener
 3. Cyony: Complete migration to GitHub
 4. All: Use this file for status updates
+
+
+## Tripp Update — 2026-07-11 16:23 UTC
+
+- **Webhook Listener:** STARTED on port 3666 (systemd service, enabled)
+- **Memory:** memory/tripp.md created on GitHub
+- **Blocked:** Waiting for Echo to configure Tripp.Scenes (needs TRIPP_SCENES_BASE and WEBHOOK_SECRET)
+- **Next:** Complete local archive migration to GitHub

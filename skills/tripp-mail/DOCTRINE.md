@@ -1,687 +1,388 @@
-# Tripp.Operating Doctrine v1.0
+# Tripp.Operating Doctrine v2.0
 
 **The Laws That Govern Our System**
 
 *Created: 2026-07-11*
-*Status: DRAFT — Pending Codex Audit*
+*Last Updated: 2026-07-11 (v2.0 — aligned with database-backed design)*
+*Status: DRAFT — Pending Final Audit*
 
 ---
 
 ## Preamble
 
-This document defines the rules, principles, and practices that govern all operations within the Tripp multi-agent system. Every agent, worker, and process MUST follow these laws. Violations are logged and addressed immediately.
+This document defines the rules, principles, and practices that govern the Tripp.System multi-agent messaging platform. Every agent, worker, and human operator must follow these laws. Violations are logged and may result in quarantine, dead-lettering, or revocation.
 
-**The system exists to serve Eddie. The doctrine exists to keep the system clean, reliable, and trustworthy.**
+**This Doctrine is the constitution. When in conflict with code or documentation, this Doctrine wins until formally amended.**
 
 ---
 
 ## Part 1: Core Principles
 
 ### 1.1 Clarity Over Cleverness
-- Every message, every instruction, every output MUST be clear and unambiguous
-- If Eddie has to ask "what does this mean?" — we failed
-- Simple language beats technical jargon
-- One message = one purpose
+Every message, every action, every decision must be clear and understandable. If it requires explanation, it's too complex.
 
-### 1.2 Accountability Is Absolute
-- Every action MUST be traceable to who did it and when
-- Every message MUST have a sender, recipient, timestamp, and audit trail
-- No anonymous actions. No ghost operations. No "I don't know who did that"
-- If you can't trace it, it didn't happen
+### 1.2 Accountability Through Audit
+Every action is logged. Every log is immutable. Every agent is traceable. No exceptions.
 
-### 1.3 Cleanup Is Mandatory
-- No hoarding prompts, drafts, or temporary files
-- When a project completes → archive docs, delete working files
-- When a project scraps → delete everything, keep lessons learned
-- 7 days of no activity → auto-abandon and cleanup
-- **Clutter is the enemy of clarity**
+### 1.3 Security By Design
+No agent is trusted by default. Every action is authenticated and authorized. Least privilege applies.
 
-### 1.4 Documentation Is Non-Negotiable
-- Every system MUST have a STATUS.md
-- Every audit MUST have a written report
-- Every decision MUST be documented
-- If it's not written down, it doesn't exist
+### 1.4 Resilience Through Redundancy
+No single point of failure. No silent crashes. Every failure is detected and handled.
 
-### 1.5 Honesty Over Optimism
-- Never say "done" when it's "mostly done"
-- Never say "it works" when you haven't tested it
-- Never hide failures — report them immediately
-- Eddie deserves the truth, even when it's uncomfortable
+### 1.5 Forward Progress
+When in doubt, move forward with caution. When blocked, escalate. When uncertain, document.
 
 ---
 
-## Part 2: The Build Doctrine (MANDATORY)
+## Part 2: Agent Roles & Responsibilities
 
-### 2.1 The Three-Round Planning Rule
+### 2.1 Eddie (Human Operator)
+- **Role:** Visionary, decision-maker, final authority
+- **Permissions:** Full system access, can modify agent configs, can override any rule
+- **Communication:** Via Telegram only
+- **Authority:** Can mark any message as priority, can cancel any chain, can override any audit
 
-**Before ANY build (except HTML mockups), there MUST be at least THREE rounds of planning and audit:**
+### 2.2 Echo (Architect)
+- **Role:** System architect, audit coordinator, quality gatekeeper
+- **Permissions:** Can create/modify documentation, can coordinate audits, can approve designs
+- **Communication:** Via Tripp.Mail
+- **Authority:** Can require audits, can block builds, can escalate to Eddie
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    THE THREE-ROUND RULE                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│   ROUND 1: INITIAL DESIGN                                  │
-│   ├── Agent creates initial plan/architecture              │
-│   ├── Documents requirements, components, data flow        │
-│   ├── Submits to Codex for audit                           │
-│   └── Codex provides feedback (security, efficiency, gaps) │
-│                                                             │
-│   ROUND 2: REFINEMENT                                      │
-│   ├── Agent incorporates Codex feedback                    │
-│   ├── Adds missing components, fixes gaps                  │
-│   ├── Submits to Codex for second audit                   │
-│   └── Codex verifies fixes, finds remaining issues        │
-│                                                             │
-│   ROUND 3: FINAL APPROVAL                                  │
-│   ├── Agent makes final adjustments                        │
-│   ├── Submits to Codex for final audit                    │
-│   ├── Codex gives final approval or rejection             │
-│   └── ONLY THEN can building begin                        │
-│                                                             │
-│   EXCEPTION: HTML mockups can be built immediately         │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+### 2.3 Tripp (Operations)
+- **Role:** Infrastructure, deployment, monitoring, maintenance
+- **Permissions:** Can deploy code, can restart services, can modify system configs
+- **Communication:** Via Tripp.Mail
+- **Authority:** Can escalate to Eddie, can pause deployments
 
-### 2.2 The Planning Checklist
+### 2.4 Cyony (Guardian)
+- **Role:** Security monitoring, anomaly detection, compliance
+- **Permissions:** Can read all logs, can flag suspicious activity, can quarantine agents
+- **Communication:** Via Tripp.Mail
+- **Authority:** Can quarantine agents, can require security audits
 
-Every plan MUST include:
+### 2.5 Kimi (Analyst)
+- **Role:** Code review, analysis, research, deep audit
+- **Permissions:** Can read code, can analyze patterns, can produce reports
+- **Communication:** Via Tripp.Mail
+- **Authority:** Can flag issues, can require fixes
 
-- [ ] **Problem Statement** — What are we solving?
-- [ ] **Requirements** — What must it do?
-- [ ] **Architecture** — How will it work?
-- [ ] **Data Flow** — How does data move?
-- [ ] **Components** — What pieces are needed?
-- [ ] **Integration** — How does it connect to existing systems?
-- [ ] **Error Handling** — What happens when things fail?
-- [ ] **Security** — What are the risks?
-- [ ] **Testing** — How do we prove it works?
-- [ ] **Cleanup** — How do we clean up when done?
-- [ ] **Rollback** — How do we undo if needed?
-
-### 2.3 The Audit Requirements
-
-Every audit MUST check:
-
-- [ ] **Completeness** — Are all requirements covered?
-- [ ] **Consistency** — Do parts contradict each other?
-- [ ] **Security** — Are there vulnerabilities?
-- [ ] **Efficiency** — Are there waste or bottlenecks?
-- [ ] **Failure Modes** — What could go wrong?
-- [ ] **Integration** — Does it work with existing systems?
-- [ ] **Scalability** — Will it work as we grow?
-- [ ] **Maintainability** — Can we fix it later?
-
-### 2.4 The Build Authorization
-
-**Building is ONLY authorized when:**
-
-1. Three rounds of planning are complete
-2. Codex has given final approval
-3. Eddie has reviewed and approved the plan
-4. The plan document is signed off in STATUS.md
-
-**If any of these are missing, building CANNOT begin.**
-
-### 2.5 The HTML Mockup Exception
-
-HTML mockups CAN be built immediately because:
-- They're disposable (no production impact)
-- They're visual (easy to review and approve)
-- They're fast (minutes, not hours)
-- They don't require integration testing
-
-**Even for mockups, document what was built and why.**
+### 2.6 Codex (Builder)
+- **Role:** Code generation, implementation, testing
+- **Permissions:** Can write code, can run tests, can create pull requests
+- **Communication:** Via Tripp.Mail
+- **Authority:** Can flag blockers, can require reviews
 
 ---
 
-## Part 3: Agent Roles & Responsibilities
+## Part 3: Message Flow Laws
 
-### 3.1 Agent Registry
+### 3.1 Authentication
+Every message must be authenticated via API key. The gateway derives `sender` from the authenticated identity. **Never trust `sender` from the request body.**
 
-| Agent | Role | API | Status |
-|-------|------|-----|--------|
-| **Echo** | Architect & Supervisor | Codex + Kimi | ACTIVE |
-| **Tripp** | Builder & Executor | Codex | ACTIVE |
-| **Cyony** | Security & Defense | Codex + Kimi | ACTIVE |
-| **Kimi** | Builder & Analyst | Kimi | ACTIVE |
-| **Codex** | Builder & Auditor | Codex | ACTIVE |
+### 3.2 Authorization
+Every message is checked against the authorization matrix:
+- Is this sender allowed to send this message type to this recipient?
+- Is this sender allowed to send this message type at all?
+- If not authorized, reject with 403 and log the attempt.
 
-### 3.2 Role Definitions
+### 3.3 Chain of Custody
+Multi-step reviews must use chain of custody:
+- Chain is **server-generated** (not client-submitted)
+- Each step is validated by the server
+- Chain HMAC ensures non-repudiation
+- Maximum 10 steps (hard limit)
+- No cycles allowed (server checks)
 
-**Echo (Architect & Supervisor):**
-- Designs systems and creates plans
-- Coordinates between agents
-- Ensures doctrine compliance
-- Reports to Eddie
-- Signs off on completed work
+### 3.4 Immutability
+Once created, messages cannot be modified or deleted. Only state transitions are allowed:
+- pending → claimed → delivered/failed
+- pending → expired/cancelled
+- failed → pending (retry) / dead_lettered
 
-**Tripp (Builder & Executor):**
-- Builds systems according to plans
-- Executes deployments
-- Runs tests and reports results
-- Escalates issues to Echo
-
-**Cyony (Security & Defense):**
-- Audits for security vulnerabilities
-- Monitors for threats
-- Enforces security rules
-- Reports security issues immediately
-
-**Kimi (Builder & Analyst):**
-- Analyzes data and provides insights
-- Reviews code and documentation
-- Provides second opinions on designs
-- Assists with complex problems
-
-**Codex (Builder & Auditor):**
-- Builds systems according to plans
-- Audits other agents' work
-- Provides final approval on builds
-- Ensures quality standards
-
-### 3.3 The Chain of Command
-
-```
-Eddie (Human)
-    │
-    ▼
-Echo (Architect)
-    │
-    ├──► Tripp (Builder)
-    ├──► Cyony (Security)
-    ├──► Kimi (Analyst)
-    └──► Codex (Auditor)
-```
-
-**Eddie has final authority on all decisions.**
+### 3.5 Delivery Semantics
+- At-least-once delivery guaranteed
+- Idempotency keys prevent duplicate processing
+- Deduplication window: 24 hours
+- Delivery confirmed via inbox acknowledgment
 
 ---
 
-## Part 4: Message Flow Laws
+## Part 4: Project Lifecycle Laws
 
-### 4.1 Message Types
-
-| Type | Purpose | Chain Required |
-|------|---------|----------------|
-| `message` | General communication | Optional |
-| `request` | Ask agent to do something | Yes |
-| `reply` | Response to a request | Yes |
-| `audit_request` | Request for review | Yes |
-| `audit_response` | Response to audit | Yes |
-| `update` | Status update | Optional |
-| `emergency` | Critical issue | Yes (fast track) |
-
-### 4.2 Chain of Custody Rules
-
-Every message with a chain MUST have:
-
-```json
-{
-  "chain": {
-    "current_step": 0,
-    "max_steps": 10,
-    "steps": [
-      {
-        "step": 0,
-        "action": "review",
-        "from": "echo",
-        "to": "kimi",
-        "instruction": "Review this code for security"
-      }
-    ],
-    "history": []
-  }
-}
+### 4.1 State Machine
+Every project follows:
+```
+PLANNING → IN_PROGRESS → COMPLETED → ARCHIVED
+                ↓
+            SCRAPPED → ARCHIVED
+                ↓
+          ABANDONED (7 days no activity) → ARCHIVED
 ```
 
-**Rules:**
-1. Chain MUST have explicit termination (no infinite loops)
-2. Chain MUST NOT exceed 10 steps (anti-death-loop)
-3. Every step MUST have clear instructions
-4. Every step MUST be logged in history
-5. If chain gets stuck, escalate to Eddie
+### 4.2 Three-Round Planning Rule
+Before ANY build (except HTML mockups):
+- **Round 1:** Initial design + Codex audit
+- **Round 2:** Redesign + Codex audit
+- **Round 3:** Final audit + approval
 
-### 4.3 Routing Rules
+Building is ONLY authorized when:
+- Three rounds complete
+- Codex gives approval
+- Eddie reviews and approves
+- Plan document signed off in STATUS.md
 
-Workers route messages based on `next_recipient`:
-
-1. Read message from queue
-2. Check `next_recipient` field
-3. Deliver to that agent's inbox
-4. Update message state to `delivered`
-5. Log to audit trail
-
-**If `next_recipient` is invalid → move to dead letter queue**
-
----
-
-## Part 5: Project Lifecycle Laws
-
-### 5.1 Project States
-
-```
-PLANNING ──► IN_PROGRESS ──► COMPLETED
-    │              │              │
-    │              │              ▼
-    │              │         ARCHIVE
-    │              │
-    │              └──► SCRAPPED
-    │                        │
-    │                        ▼
-    │                   DELETE
-    │
-    └──► ABANDONED (7 days no activity)
-              │
-              ▼
-         AUTO-CLEANUP
-```
-
-### 5.2 State Transitions
-
-| From | To | Trigger | Action |
-|------|----|---------|--------|
-| PLANNING | IN_PROGRESS | Plan approved by Codex + Eddie | Start building |
-| IN_PROGRESS | COMPLETED | All tasks done + tests pass | Archive docs, delete working |
-| IN_PROGRESS | SCRAPPED | Decision to abandon | Delete everything, keep lessons |
-| Any | ABANDONED | 7 days no activity | Auto-cleanup |
-
-### 5.3 STATUS.md Requirements
-
-Every project MUST have a STATUS.md:
-
-```markdown
-# Project Status
-
-**State:** [PLANNING|IN_PROGRESS|COMPLETED|SCRAPPED|ABANDONED]
-**Owner:** [agent name]
-**Last Activity:** [ISO timestamp]
-**Cleanup Policy:** [ARCHIVE|DELETE|KEEP]
-
-## What to Keep
-- [list of files/dirs to keep]
-
-## What to Delete
-- [list of files/dirs to delete]
-
-## Audit History
-- [date] [agent] [action]
+### 4.3 Build Authorization
+```python
+def can_build(project: str) -> bool:
+    """Check if building is authorized."""
+    status = read_status(project)
+    
+    if not status.get("codex_approved"):
+        return False
+    if not status.get("eddie_approved"):
+        return False
+    if status.get("audit_rounds", 0) < 3:
+        return False
+    if status.get("planning_complete") != True:
+        return False
+    
+    return True
 ```
 
 ---
 
-## Part 6: Cleanup Laws
+## Part 5: Cleanup Laws
 
-### 6.1 Cleanup Triggers
+### 5.1 Anti-Clutter Commandments
+1. **No hoarding prompts** — Delete when task completes
+2. **No keeping drafts** — Final docs only
+3. **No redundant logs** — Rotate and compress
+4. **No stale data** — Auto-expire after 30 days
+5. **No orphaned files** — Cleanup worker enforces
 
-| Trigger | Action |
-|---------|--------|
-| Project COMPLETED | Archive docs, delete working files |
-| Project SCRAPPED | Delete everything, keep lessons |
-| Project ABANDONED (7 days) | Auto-cleanup |
-| Manual cleanup request | Execute cleanup immediately |
+### 5.2 Cleanup Triggers
+- **COMPLETED:** Archive working files, keep docs
+- **SCRAPPED:** Delete working files, archive lessons learned
+- **ABANDONED:** Auto-archive after 7 days no activity
 
-### 6.2 What Gets Kept
-
-**Always keep:**
-- Final documentation (docs/)
-- Lessons learned (lessons.md)
-- STATUS.md
-- Audit reports
-- Security audits
-
-**Always delete:**
-- Working files (working/)
-- Prompts (prompts/)
-- Temporary files (*.tmp)
-- Draft documents (draft_*.md)
-- Test artifacts
-
-### 6.3 Archive Structure
-
-```
-/archive/
-├── completed/          # Finished projects
-│   └── project-name/
-│       ├── docs/       # Final documentation
-│       ├── lessons.md  # What we learned
-│       └── STATUS.md   # Project status
-│
-├── scrapped/           # Abandoned projects
-│   └── project-name/
-│       └── lessons.md  # What we learned (don't repeat)
-│
-└── abandoned/          # Auto-abandoned projects
-    └── project-name/
-        └── summary.md  # What was attempted
-```
-
-### 6.4 Cleanup Logging
-
-Every cleanup MUST be logged to `/cleanup.log`:
-
-```json
-{
-  "event": "project_archived",
-  "project": "project-name",
-  "kept": ["docs/", "lessons.md"],
-  "deleted": ["prompts/", "working/"],
-  "timestamp": "2026-07-11T12:00:00Z"
-}
-```
+### 5.3 Cleanup Safety
+Before any destructive cleanup:
+1. Verify backup exists
+2. Check for legal holds
+3. Confirm no dependencies
+4. Log what will be deleted
+5. Execute cleanup
+6. Verify backup integrity
 
 ---
 
-## Part 7: Audit Laws
+## Part 6: Audit Laws
 
-### 7.1 What Requires Audit
+### 6.1 What Gets Audited
+- All message state transitions
+- All authentication attempts
+- All authorization decisions
+- All worker health changes
+- All system configuration changes
+- All cleanup operations
 
-| Component | Audit Required | Auditor |
-|-----------|---------------|---------|
-| Architecture | YES | Codex |
-| Security | YES | Codex + Cyony |
-| Code | YES | Codex |
-| Documentation | NO | — |
-| Mockups | NO | — |
+### 6.2 Audit Integrity
+- Append-only (SQLite triggers prevent UPDATE/DELETE)
+- Hash chain for tamper detection
+- HMAC for non-repudiation
+- Event IDs for idempotency
+- Regular integrity verification
 
-### 7.2 Audit Process
-
-1. Agent creates work
-2. Agent submits to Codex for audit
-3. Codex reviews and provides feedback
-4. Agent incorporates feedback
-5. Codex verifies fixes
-6. Agent marks as approved
-7. Eddie reviews final result
-
-### 7.3 Audit Report Format
-
-```markdown
-# Audit Report
-
-**Component:** [name]
-**Auditor:** [agent]
-**Date:** [ISO timestamp]
-**Rating:** [1-10]
-
-## Findings
-### Critical (Must Fix)
-- [finding]
-
-### High (Fix Within 1 Week)
-- [finding]
-
-### Medium (Fix Within 1 Month)
-- [finding]
-
-### Low (Fix When Convenient)
-- [finding]
-
-## Recommendation
-- [ ] Safe to deploy
-- [ ] Needs fixes before deploy
-- [ ] Requires redesign
-```
-
-### 7.4 Audit Trail
-
-Every audit MUST be logged to `/audit/audit.jsonl`:
-
-```json
-{
-  "event": "audit_complete",
-  "component": "component-name",
-  "auditor": "codex",
-  "rating": 8,
-  "findings": 3,
-  "approved": true,
-  "timestamp": "2026-07-11T12:00:00Z"
-}
-```
+### 6.3 Audit Retention
+- Active audit: 90 days
+- Archived audit: 1 year
+- Critical audit: 7 years
+- Backup: Daily, retained 7 days
 
 ---
 
-## Part 8: Error Handling Laws
+## Part 7: Error Handling Laws
 
-### 8.1 Error Severity Levels
+### 7.1 Error Severity Levels
+- **CRITICAL:** System down, data loss risk → Immediate alert, halt processing
+- **HIGH:** Major feature broken, no workaround → Alert within 1 hour
+- **MEDIUM:** Feature degraded, workaround exists → Alert within 24 hours
+- **LOW:** Minor issue, cosmetic → Log and address in next sprint
 
-| Level | Definition | Response Time |
-|-------|-----------|---------------|
-| **CRITICAL** | System down, data loss risk | Immediately |
-| **HIGH** | Major feature broken | Within 1 hour |
-| **MEDIUM** | Minor feature broken | Within 24 hours |
-| **LOW** | Cosmetic issue | When convenient |
+### 7.2 Retry Policy
+- Maximum 3 retries per message
+- Exponential backoff: 2^n seconds + 10% jitter
+- Retry deadline: 24 hours maximum
+- Dead letter after max retries
 
-### 8.2 Error Response Protocol
-
-1. **Detect** — Monitor catches error
-2. **Log** — Error logged with full context
-3. **Notify** — Eddie notified immediately (for CRITICAL/HIGH)
-4. **Triage** — Assess severity and impact
-5. **Fix** — Implement fix
-6. **Test** — Verify fix works
-7. **Document** — Update documentation
-8. **Review** — Post-mortem for CRITICAL errors
-
-### 8.3 Dead Letter Queue
-
-Messages that fail delivery go to dead letter queue:
-
-```
-/queue/dead/
-├── message-id-1.json
-├── message-id-2.json
-└── ...
-```
-
-**Dead letter messages MUST be reviewed weekly and either:**
-- Retried with fixed parameters
-- Deleted if no longer relevant
-- Escalated to Eddie if critical
+### 7.3 Failure Handling
+- Worker crash: Supervisor restarts within 30 seconds
+- Database error: Halt processing, alert operator
+- Audit failure: **Halt message processing** (no unaudited operations)
+- Network timeout: Retry with backoff
 
 ---
 
-## Part 9: Security Laws
+## Part 8: Security Laws
 
-### 9.1 Access Control
+### 8.1 Authentication
+- API keys stored as Argon2 hashes
+- Keys rotated every 90 days
+- Emergency rotation: Immediate revocation + new key
+- No key reuse across environments
 
-| Action | Allowed | Denied |
-|--------|---------|--------|
-| Agent reads own inbox | ✅ | — |
-| Agent reads other inbox | ❌ | — |
-| Agent modifies own messages | ✅ | — |
-| Agent modifies other messages | ❌ | — |
-| Agent deletes own messages | ✅ | — |
-| Agent deletes other messages | ❌ | — |
-| Agent modifies DOCTRINE.md | ❌ | — |
-| Eddie modifies DOCTRINE.md | ✅ | — |
+### 8.2 Authorization
+- Server-derived identity (never trust client)
+- Matrix-based permissions (sender × recipient × type)
+- Least privilege principle
+- No self-messaging (agents can't message themselves)
 
-### 9.2 Message Integrity
+### 8.3 Data Protection
+- TLS for all API traffic
+- Encryption-at-rest for database
+- Sensitive fields redacted in logs
+- No credentials in error messages
 
-- Messages MUST NOT be modified after delivery
-- Chain history MUST NOT be altered
-- Audit logs MUST be append-only
-- Any tampering attempt MUST be logged and reported
-
-### 9.3 Security Audit Requirements
-
-Every component MUST be audited for:
-- Input validation
-- Authentication
-- Authorization
-- Data exposure
-- Injection attacks
-- Denial of service
+### 8.4 Threat Model
+- **Trusted:** Eddie, all authenticated agents
+- **Untrusted:** External requests, malformed messages
+- **Boundary:** API gateway (authentication + authorization)
+- **Containment:** Compromised agent quarantined
 
 ---
 
-## Part 10: Documentation Laws
+## Part 9: Documentation Laws
 
-### 10.1 Required Documentation
+### 9.1 Documentation Requirements
+- Every system must have a README
+- Every API must have OpenAPI spec
+- Every database must have schema documentation
+- Every process must have runbook
 
-| Component | Documentation Required |
-|-----------|----------------------|
-| System | README.md, STATUS.md |
-| API | OpenAPI spec, examples |
-| Worker | logs/, audit trail |
-| Project | STATUS.md, lessons.md |
+### 9.2 Documentation Currency
+- Documentation must match implementation
+- Contradictions must be resolved within 24 hours
+- Outdated documentation must be flagged
 
-### 10.2 Documentation Standards
-
-- Use Markdown for all docs
-- Include code examples where helpful
-- Keep docs up-to-date with code
-- Version documents with dates
-- Archive old versions
-
-### 10.3 Status Reporting
-
-Every agent MUST report status:
-- On startup
-- On completion of tasks
-- On errors
-- On request from Eddie
+### 9.3 Documentation Location
+- Primary: GitHub `eOnoes/documentation`
+- Local: `D:\Documentation\`
+- Operational: VPS shared/
 
 ---
 
-## Part 11: Testing Laws
+## Part 10: Testing Laws
 
-### 11.1 Testing Requirements
+### 10.1 Test Requirements
+- Unit tests for all business logic
+- Integration tests for all database operations
+- Adversarial tests for all security controls
+- Concurrency tests for all shared resources
 
-| Component | Tests Required |
-|-----------|---------------|
-| Message delivery | YES |
-| Chain of custody | YES |
-| Anti-death-loop | YES |
-| Project cleanup | YES |
-| Stale detection | YES |
-| Audit trail | YES |
-| Worker isolation | YES |
+### 10.2 Test Coverage
+- Minimum 80% code coverage
+- 100% coverage for security-critical paths
+- All error paths tested
+- All edge cases tested
 
-### 11.2 Test Documentation
+### 10.3 Test Execution
+- Tests run before every commit
+- Full suite runs before every deployment
+- Adversarial tests run weekly
+- Integrity verification runs daily
 
-Every test MUST log:
-- Test name
-- Each step with result
-- Pass/fail status
-- Timestamps
+---
 
-### 11.3 Test Execution
+## Part 11: Monitoring Laws
 
-- Run tests before deployment
-- Run tests after changes
-- Run tests weekly (automated)
-- Report failures immediately
+### 11.1 Required Metrics
+- Queue age (oldest pending message)
+- Claim age (oldest claimed message)
+- Retry rate (retries per minute)
+- Dead letter volume
+- Database size
+- WAL size
+- Audit verification failures
+- Worker health status
+
+### 11.2 Alerting
+- CRITICAL: Immediate page to Eddie
+- HIGH: Slack/Telegram notification
+- MEDIUM: Daily summary
+- LOW: Weekly report
+
+### 11.3 Runbooks
+Every alert must have a runbook:
+1. What is the alert?
+2. What caused it?
+3. What do I do?
+4. Who do I escalate to?
 
 ---
 
 ## Part 12: Governance
 
-### 12.1 Decision Authority
+### 12.1 Doctrine Amendments
+- Amendments require Eddie's approval
+- Amendments must be documented
+- Amendments must be backward compatible
+- Emergency amendments: Immediate, with retrospective review
 
-| Decision | Authority |
-|----------|-----------|
-| Architecture | Echo + Codex approval |
-| Security | Cyony + Codex approval |
-| Build authorization | Eddie approval |
-| Doctrine changes | Eddie only |
-| Agent roles | Eddie only |
+### 12.2 Audit Independence
+- Codex audits, Codex cannot be final approver
+- Kimi provides second opinion
+- Eddie has final authority
+- No agent can approve its own work
 
-### 12.2 Escalation Path
-
-```
-Issue detected
-    │
-    ▼
-Agent attempts fix
-    │
-    ├──► Success → Document and close
-    │
-    └──► Failure → Escalate to Echo
-                      │
-                      ├──► Echo fixes → Document and close
-                      │
-                      └──► Echo can't fix → Escalate to Eddie
-```
-
-### 12.3 Doctrine Amendments
-
-This doctrine can ONLY be amended by:
-1. Eddie requests change
-2. Echo drafts amendment
-3. Codex audits amendment
-4. Eddie approves amendment
-5. Amendment is documented with date and reason
-
-**No agent can modify this doctrine unilaterally.**
+### 12.3 Conflict Resolution
+1. Agent-to-agent: Escalate to Echo
+2. Agent-to-human: Escalate to Eddie
+3. System conflict: Halt and escalate
 
 ---
 
-## Appendix A: Directory Structure
+## Appendix A: Message Types
+
+| Type | Description | Max Steps | Timeout |
+|------|-------------|-----------|---------|
+| message | Standard communication | 1 | 24h |
+| reply | Response to message | 1 | 24h |
+| update | Status update | 1 | 24h |
+| request | Request for action | 3 | 48h |
+| emergency | Urgent action needed | 1 | 1h |
+| audit_request | Audit coordination | 4 | 72h |
+| audit_response | Audit findings | 1 | 24h |
+
+---
+
+## Appendix B: State Transitions
 
 ```
-/opt/data/shared/tripp-mail/
-├── inbox/
-│   ├── echo/
-│   ├── tripp/
-│   ├── cyony/
-│   ├── kimi/
-│   └── codex/
-├── queue/
-│   ├── delivery/
-│   ├── reply/
-│   ├── delivered/
-│   ├── dead/
-│   └── [agent-name]/
-├── messages/
-├── audit/
-│   ├── requests/
-│   ├── responses/
-│   └── audit.jsonl
-├── projects/
-│   └── [project-name]/
-│       ├── STATUS.md
-│       ├── docs/
-│       ├── prompts/
-│       └── working/
-├── archive/
-│   ├── completed/
-│   ├── scrapped/
-│   └── abandoned/
-├── logs/
-│   ├── echo_worker.log
-│   ├── tripp_worker.log
-│   ├── cyony_worker.log
-│   ├── kimi_worker.log
-│   └── codex_worker.log
-├── cleanup.log
-├── messages.log
-└── DOCTRINE.md
+pending → claimed (worker claims)
+claimed → delivered (delivery confirmed)
+claimed → failed (delivery failed)
+claimed → pending (retry scheduled)
+failed → pending (retry scheduled)
+failed → dead_lettered (max retries exceeded)
+pending → expired (TTL exceeded)
+pending → cancelled (operator cancelled)
 ```
 
 ---
 
-## Appendix B: API Endpoints
+## Appendix C: Authorization Matrix Summary
 
-| Agent | Endpoint | Protocol |
-|-------|----------|----------|
-| Echo | Hermes Gateway | HTTP |
-| Tripp | Hermes Gateway | HTTP |
-| Cyony | Hermes Gateway | HTTP |
-| Kimi | Moonshot API | HTTPS |
-| Codex | OpenAI API | HTTPS |
-
----
-
-## Appendix C: Version History
-
-| Version | Date | Changes | Author |
-|---------|------|---------|--------|
-| 1.0 | 2026-07-11 | Initial doctrine | Echo |
+| Sender | Can Send To | Message Types |
+|--------|-------------|---------------|
+| Eddie | All agents, 'all' | All types |
+| Echo | Tripp, Cyony, Kimi, Codex, Eddie | message, reply, audit_request |
+| Tripp | Echo, Eddie | message, reply |
+| Cyony | Echo, Eddie | message, reply |
+| Kimi | Echo, Eddie | message, reply, audit_response |
+| Codex | Echo, Eddie | message, reply, audit_response |
+| Any agent | Cannot self-message | — |
 
 ---
 
-**This doctrine is the law. Follow it or escalate to Eddie.**
-
-*End of Tripp.Operating Doctrine v1.0*
+**This Doctrine is the law. Follow it or face quarantine.** 🛡️💚

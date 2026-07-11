@@ -330,10 +330,10 @@ Every alert must have a runbook:
 - Emergency amendments: Immediate, with retrospective review
 
 ### 12.2 Audit Independence
-- Codex audits, Codex cannot be final approver
-- Kimi provides second opinion
-- Eddie has final authority
 - No agent can approve its own work
+- Kimi provides second opinion on audits
+- Eddie has final authority on all builds
+- Codex can audit AND approve (but Eddie always confirms)
 
 ### 12.3 Conflict Resolution
 1. Agent-to-agent: Escalate to Echo

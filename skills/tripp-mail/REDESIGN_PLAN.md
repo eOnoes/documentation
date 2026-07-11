@@ -387,8 +387,9 @@ END;
 CREATE TRIGGER audit_hash_format
 BEFORE INSERT ON audit_log
 WHEN length(NEW.previous_hash) != 64 OR NEW.previous_hash GLOB '*[^0-9a-f]*'
+   OR length(NEW.record_hash) != 64 OR NEW.record_hash GLOB '*[^0-9a-f]*'
 BEGIN
-    SELECT RAISE(ABORT, 'previous_hash must be 64-char lowercase hex');
+    SELECT RAISE(ABORT, 'previous_hash and record_hash must be 64-char lowercase hex');
 END;
 
 -- 6. Broadcast delivery trigger (create per-recipient records)
@@ -1124,8 +1125,8 @@ CREATE TRIGGER audit_hash_chain_verify BEFORE INSERT ON audit_log WHEN EXISTS (S
     SELECT RAISE(ABORT,'hash chain broken');
 END;
 
-CREATE TRIGGER audit_hash_format BEFORE INSERT ON audit_log WHEN length(NEW.previous_hash)!=64 OR NEW.previous_hash GLOB '*[^0-9a-f]*' BEGIN
-    SELECT RAISE(ABORT,'previous_hash must be 64-char hex');
+CREATE TRIGGER audit_hash_format BEFORE INSERT ON audit_log WHEN length(NEW.previous_hash)!=64 OR NEW.previous_hash GLOB '*[^0-9a-f]*' OR length(NEW.record_hash)!=64 OR NEW.record_hash GLOB '*[^0-9a-f]*' BEGIN
+    SELECT RAISE(ABORT,'hash must be 64-char hex');
 END;
 
 CREATE TRIGGER broadcast_delivery AFTER INSERT ON messages WHEN NEW.recipient='all' BEGIN
@@ -1214,14 +1215,14 @@ class TestSignatures(unittest.TestCase):
 
     def test_unsigned_agent_rejected(self):
         with self.assertRaises(sqlite3.IntegrityError):
-            self.db.execute("INSERT INTO audit_log(event_id,action,actor,details,timestamp,previous_hash,record_hash,signature) VALUES('e1','created','echo','{}','','0'*64,'h',NULL)")
+            self.db.execute("INSERT INTO audit_log(event_id,action,actor,details,timestamp,previous_hash,record_hash,signature) VALUES('e1','created','echo','{}','','0000000000000000000000000000000000000000000000000000000000000000','h',NULL)")
 
     def test_blank_signature_rejected(self):
         with self.assertRaises(sqlite3.IntegrityError):
-            self.db.execute("INSERT INTO audit_log(event_id,action,actor,details,timestamp,previous_hash,record_hash,signature) VALUES('e1','created','echo','{}','','0'*64,'h','')")
+            self.db.execute("INSERT INTO audit_log(event_id,action,actor,details,timestamp,previous_hash,record_hash,signature) VALUES('e1','created','echo','{}','','0000000000000000000000000000000000000000000000000000000000000000','h','')")
 
     def test_system_needs_no_signature(self):
-        self.db.execute("INSERT INTO audit_log(event_id,action,actor,details,timestamp,previous_hash,record_hash,signature) VALUES('e1','created','system','{}','','0'*64,'h',NULL)")
+        self.db.execute("INSERT INTO audit_log(event_id,action,actor,details,timestamp,previous_hash,record_hash,signature) VALUES('e1','created','system','{}','','0000000000000000000000000000000000000000000000000000000000000000','0000000000000000000000000000000000000000000000000000000000000000',NULL)")
         self.db.commit()
         self.assertEqual(self.db.execute("SELECT COUNT(*) FROM audit_log").fetchone()[0], 1)
 

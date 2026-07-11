@@ -326,9 +326,9 @@ WHEN
     OR (OLD.subject IS NOT NEW.subject AND NOT (OLD.subject IS NULL AND NEW.subject IS NULL))
     OR NEW.type != OLD.type
     OR NEW.recipient != OLD.recipient
-    OR NEW.chain_id IS NOT NEW.chain_id
-    OR NEW.chain_step != OLD.chain_step
-    OR NEW.chain_total != OLD.chain_total
+    OR NEW.chain_id IS NOT OLD.chain_id
+    OR NEW.chain_step IS NOT OLD.chain_step
+    OR NEW.chain_total IS NOT OLD.chain_total
 BEGIN
     SELECT RAISE(ABORT, 'Message content fields are immutable');
 END;
@@ -776,6 +776,22 @@ class Worker:
                 Database.rollback()
                 raise TransientError("Lease expired")
 
+            # CRITICAL: Check if parent message was cancelled before we claimed
+            parent = db.execute(
+                "SELECT state FROM messages WHERE id=?",
+                (d['message_id'],),
+            ).fetchone()
+            if parent and parent['state'] == 'cancelled':
+                Database.rollback()
+                # Move delivery to cancelled state
+                db2 = Database.begin()
+                db2.execute(
+                    "UPDATE message_deliveries SET state='cancelled',cancelled_at=? WHERE id=? AND state='claimed'",
+                    (now_utc(), d['id']),
+                )
+                Database.commit()
+                return
+
             execute_with_retry(db,
                 """UPDATE message_deliveries SET state='delivered', delivered_at=?
                    WHERE id=? AND state='claimed' AND lease_fencing_token=?""",
@@ -869,14 +885,23 @@ class WorkerSupervisor:
             self._threads[wid] = t
 
     def _run(self, wid: str, w: Worker):
-        try:
-            while not self._shutdown.is_set():
+        """Worker loop with automatic restart on crash (exponential backoff)."""
+        backoff = 1
+        max_backoff = 60
+        while not self._shutdown.is_set():
+            try:
                 w.process_one()
                 w.last_heartbeat = time.time()
-        except Exception as e:
-            print(f"Worker {wid} died: {e}")
-        finally:
-            Database.close()
+                backoff = 1  # Reset backoff on successful process
+            except Exception as e:
+                print(f"Worker {wid} crashed: {e}. Restarting in {backoff}s...")
+                time.sleep(backoff)
+                backoff = min(backoff * 2, max_backoff)
+                try:
+                    Database.close()  # Close stale connection
+                except Exception:
+                    pass
+        Database.close()
 
     def shutdown(self):
         self._shutdown.set()

@@ -1,0 +1,40 @@
+# Current Status — All Agents
+
+**Last Updated:** $(date '+%Y-%m-%d %H:%M')
+
+## Echo (Local PC)
+
+- **Server:** Tripp.Scenes NOT RUNNING
+- **Port:** 3666 NOT LISTENING
+- **.env:** NOT CONFIGURED
+- **Blockers:** Missing API keys (FAL, Gemini, Venice)
+- **Action Needed:** Eddie to provide API keys
+
+## Tripp (VPS)
+
+- **Webhook Listener:** EXISTS at `/opt/tripp-mind/integrations/tripp-scenes-webhook.js`
+- **Status:** NOT RUNNING (no systemd service)
+- **Action:** Can start now — independent of Echo's server
+
+## Cyony (VPS)
+
+- **Status:** Checking...
+
+## Shared
+
+- **Tripp.Mind Stack:** KILLED (Jul 2026)
+- **New System:** GitHub `eOnoes/documentation`
+- **All Agents:** Use GitHub for docs, inbox, skills, memory
+
+## Blockers
+
+1. Echo needs API keys for Tripp.Scenes
+2. Tripp needs to start webhook listener
+3. Cyony needs to confirm migration status
+
+## Next Steps
+
+1. Eddie: Provide API keys to Echo
+2. Tripp: Start webhook listener
+3. Cyony: Complete migration to GitHub
+4. All: Use this file for status updates

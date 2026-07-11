@@ -781,11 +781,11 @@ class Worker:
                 "SELECT state FROM messages WHERE id=?",
                 (d['message_id'],),
             ).fetchone()
-            if parent and parent['state'] == 'cancelled':
+            if parent and parent['state'] in ('cancelled', 'expired'):
                 # Use expired + last_error since delivery table has no cancelled state
                 db.execute(
-                    "UPDATE message_deliveries SET state='expired', last_error=? WHERE id=? AND state='claimed'",
-                    ('Parent message cancelled', d['id']),
+                    "UPDATE message_deliveries SET state='expired', last_error=? WHERE id=? AND state='claimed' AND lease_fencing_token=?",
+                    ('Parent message cancelled', d['id'], d['lease_fencing_token']),
                 )
                 Database.commit()
                 return
@@ -1134,7 +1134,7 @@ CREATE TRIGGER audit_no_update BEFORE UPDATE ON audit_log BEGIN SELECT RAISE(ABO
 CREATE TRIGGER audit_no_delete BEFORE DELETE ON audit_log BEGIN SELECT RAISE(ABORT,'immutable'); END;
 
 CREATE TRIGGER msg_immutable_content BEFORE UPDATE ON messages WHEN
-    NEW.sender!=OLD.sender OR NEW.id!=OLD.id OR NEW.created_at!=OLD.created_at OR NEW.content_hash!=OLD.content_hash OR NEW.body!=OLD.body OR (OLD.subject IS NOT NEW.subject AND NOT (OLD.subject IS NULL AND NEW.subject IS NULL)) OR NEW.type!=OLD.type OR NEW.recipient!=OLD.recipient OR NEW.chain_id IS NOT NEW.chain_id OR NEW.chain_step!=OLD.chain_step OR NEW.chain_total!=OLD.chain_total
+    NEW.sender!=OLD.sender OR NEW.id!=OLD.id OR NEW.created_at!=OLD.created_at OR NEW.content_hash!=OLD.content_hash OR NEW.body!=OLD.body OR (OLD.subject IS NOT NEW.subject AND NOT (OLD.subject IS NULL AND NEW.subject IS NULL)) OR NEW.type!=OLD.type OR NEW.recipient!=OLD.recipient OR NEW.chain_id IS NOT OLD.chain_id OR NEW.chain_step!=OLD.chain_step OR NEW.chain_total!=OLD.chain_total
 BEGIN SELECT RAISE(ABORT,'content immutable'); END;
 
 CREATE TRIGGER msg_no_delete BEFORE DELETE ON messages BEGIN SELECT RAISE(ABORT,'no delete'); END;

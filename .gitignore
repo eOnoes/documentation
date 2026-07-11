@@ -4,3 +4,11 @@ __pycache__/
 .pytest_cache/
 venv/
 .env
+.pip-cache/
+node_modules/
+*.egg-info/
+dist/
+build/
+*.whl
+*.tar.gz
+*.zip

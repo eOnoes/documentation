@@ -1,0 +1,68 @@
+{
+  "reference_audio": "C:\\Users\\eMitchell109\\Downloads\\video_project_2_pocket_tts_reference_30s_clean.wav",
+  "model_dir": "C:\\Users\\eMitchell109\\Documents\\Local LLM chat\\cosyvoice3\\CosyVoice\\pretrained_models\\Fun-CosyVoice3-0.5B",
+  "cuda_available": true,
+  "device": "NVIDIA GeForce RTX 4070",
+  "tests": [
+    {
+      "test": "test_1_identity",
+      "mode": "zero_shot",
+      "text": "Hey babe, just testing the new voice. How do I sound?",
+      "instruct": "",
+      "path": "C:\\Users\\eMitchell109\\Documents\\Local LLM chat\\cosyvoice3\\test_outputs\\20260622-093253\\test_1_identity.wav",
+      "sample_rate": 24000,
+      "duration_s": 2.0,
+      "elapsed_s": 5.537,
+      "rtf": 2.769,
+      "cuda_peak_memory_mb": 4565.2
+    },
+    {
+      "test": "test_2_whisper",
+      "mode": "instruct2",
+      "text": "Hey babe, just testing the new voice. How do I sound?",
+      "instruct": "whisper softly, barely audible, intimate",
+      "path": "C:\\Users\\eMitchell109\\Documents\\Local LLM chat\\cosyvoice3\\test_outputs\\20260622-093253\\test_2_whisper.wav",
+      "sample_rate": 24000,
+      "duration_s": 4.52,
+      "elapsed_s": 5.861,
+      "rtf": 1.297,
+      "cuda_peak_memory_mb": 4287.0
+    },
+    {
+      "test": "test_3_rage",
+      "mode": "instruct2",
+      "text": "Hey babe, just testing the new voice. How do I sound?",
+      "instruct": "shout with anger and intensity",
+      "path": "C:\\Users\\eMitchell109\\Documents\\Local LLM chat\\cosyvoice3\\test_outputs\\20260622-093253\\test_3_rage.wav",
+      "sample_rate": 24000,
+      "duration_s": 3.6,
+      "elapsed_s": 5.481,
+      "rtf": 1.523,
+      "cuda_peak_memory_mb": 4286.4
+    },
+    {
+      "test": "test_4_excited",
+      "mode": "instruct2",
+      "text": "Hey babe, just testing the new voice. How do I sound?",
+      "instruct": "speak excitedly and energetically",
+      "path": "C:\\Users\\eMitchell109\\Documents\\Local LLM chat\\cosyvoice3\\test_outputs\\20260622-093253\\test_4_excited.wav",
+      "sample_rate": 24000,
+      "duration_s": 3.24,
+      "elapsed_s": 5.388,
+      "rtf": 1.663,
+      "cuda_peak_memory_mb": 4286.2
+    },
+    {
+      "test": "test_5_calm",
+      "mode": "instruct2",
+      "text": "Hey babe, just testing the new voice. How do I sound?",
+      "instruct": "speak calmly and slowly, like a meditation guide",
+      "path": "C:\\Users\\eMitchell109\\Documents\\Local LLM chat\\cosyvoice3\\test_outputs\\20260622-093253\\test_5_calm.wav",
+      "sample_rate": 24000,
+      "duration_s": 3.68,
+      "elapsed_s": 5.554,
+      "rtf": 1.509,
+      "cuda_peak_memory_mb": 4286.6
+    }
+  ]
+}

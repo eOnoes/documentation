@@ -1,0 +1,6 @@
+test,mode,text,instruct,path,sample_rate,duration_s,elapsed_s,rtf,cuda_peak_memory_mb
+test_1_identity,zero_shot,"Hey babe, just testing the new voice. How do I sound?",,C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\test_outputs\20260622-093253\test_1_identity.wav,24000,2.0,5.537,2.769,4565.2
+test_2_whisper,instruct2,"Hey babe, just testing the new voice. How do I sound?","whisper softly, barely audible, intimate",C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\test_outputs\20260622-093253\test_2_whisper.wav,24000,4.52,5.861,1.297,4287.0
+test_3_rage,instruct2,"Hey babe, just testing the new voice. How do I sound?",shout with anger and intensity,C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\test_outputs\20260622-093253\test_3_rage.wav,24000,3.6,5.481,1.523,4286.4
+test_4_excited,instruct2,"Hey babe, just testing the new voice. How do I sound?",speak excitedly and energetically,C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\test_outputs\20260622-093253\test_4_excited.wav,24000,3.24,5.388,1.663,4286.2
+test_5_calm,instruct2,"Hey babe, just testing the new voice. How do I sound?","speak calmly and slowly, like a meditation guide",C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\test_outputs\20260622-093253\test_5_calm.wav,24000,3.68,5.554,1.509,4286.6

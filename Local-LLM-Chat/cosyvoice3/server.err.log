@@ -1,0 +1,104 @@
+C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\.venv\lib\site-packages\transformers\utils\hub.py:105: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+2026-06-22 09:36:02,264 DEBUG Using proactor: IocpProactor
+INFO:     Started server process [65624]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8789 (Press CTRL+C to quit)
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+2026-06-22 09:36:26,915 INFO input frame rate=25
+C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\.venv\lib\site-packages\torch\nn\utils\weight_norm.py:28: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\.venv\lib\site-packages\onnxruntime\capi\onnxruntime_inference_collection.py:69: UserWarning: Specified provider 'CUDAExecutionProvider' is not in available provider names.Available providers: 'AzureExecutionProvider, CPUExecutionProvider'
+  warnings.warn(
+2026-06-22 09:36:29,482 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:30,907 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 222
+2026-06-22 09:36:31,223 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+Downloading [__init__.py]:   0%|          | 0.00/1.00 [00:00<?, ?B/s]Downloading [__init__.py]: 100%|##########| 1.00/1.00 [00:00<?, ?B/s]
+Downloading [configuration.json]:   0%|          | 0.00/36.0 [00:00<?, ?B/s]2026-06-22 09:36:31,398 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:32,170 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=configuration.json HTTP/1.1" 200 36
+Downloading [configuration.json]: 100%|##########| 36.0/36.0 [00:00<00:00, 46.6B/s]Downloading [configuration.json]: 100%|##########| 36.0/36.0 [00:00<00:00, 46.6B/s]
+Downloading [en_tn_tagger.fst]:   0%|          | 0.00/5.47M [00:00<?, ?B/s]2026-06-22 09:36:32,186 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:33,361 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=en_tn_tagger.fst HTTP/1.1" 200 5731710
+Downloading [en_tn_tagger.fst]:  18%|#8        | 1.00M/5.47M [00:05<00:22, 207kB/s]Downloading [en_tn_tagger.fst]:  37%|###6      | 2.00M/5.47M [00:08<00:14, 243kB/s]Downloading [en_tn_tagger.fst]:  55%|#####4    | 3.00M/5.47M [00:11<00:08, 296kB/s]Downloading [en_tn_tagger.fst]:  73%|#######3  | 4.00M/5.47M [00:14<00:04, 314kB/s]Downloading [en_tn_tagger.fst]:  91%|#########1| 5.00M/5.47M [00:17<00:01, 316kB/s]Downloading [en_tn_tagger.fst]: 100%|##########| 5.47M/5.47M [00:19<00:00, 306kB/s]Downloading [en_tn_tagger.fst]: 100%|##########| 5.47M/5.47M [00:19<00:00, 292kB/s]
+Downloading [en_tn_verbalizer.fst]:   0%|          | 0.00/1.95M [00:00<?, ?B/s]2026-06-22 09:36:51,808 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:52,941 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=en_tn_verbalizer.fst HTTP/1.1" 200 2040454
+Downloading [en_tn_verbalizer.fst]:  51%|#####1    | 1.00M/1.95M [00:03<00:03, 324kB/s]Downloading [en_tn_verbalizer.fst]: 100%|##########| 1.95M/1.95M [00:04<00:00, 501kB/s]Downloading [en_tn_verbalizer.fst]: 100%|##########| 1.95M/1.95M [00:04<00:00, 461kB/s]
+Downloading [full_to_half.fst]:   0%|          | 0.00/15.3k [00:00<?, ?B/s]2026-06-22 09:36:56,269 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:57,092 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=full_to_half.fst HTTP/1.1" 200 15634
+Downloading [full_to_half.fst]: 100%|##########| 15.3k/15.3k [00:00<00:00, 17.3kB/s]Downloading [full_to_half.fst]: 100%|##########| 15.3k/15.3k [00:00<00:00, 17.3kB/s]
+Downloading [README.md]:   0%|          | 0.00/1.36k [00:00<?, ?B/s]2026-06-22 09:36:57,191 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:58,232 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=README.md HTTP/1.1" 200 1389
+Downloading [README.md]: 100%|##########| 1.36k/1.36k [00:01<00:00, 1.33kB/s]Downloading [README.md]: 100%|##########| 1.36k/1.36k [00:01<00:00, 1.33kB/s]
+Downloading [remove_interjections.fst]:   0%|          | 0.00/11.1k [00:00<?, ?B/s]2026-06-22 09:36:58,253 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:36:59,628 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=remove_interjections.fst HTTP/1.1" 200 11322
+Downloading [remove_interjections.fst]: 100%|##########| 11.1k/11.1k [00:01<00:00, 8.22kB/s]Downloading [remove_interjections.fst]: 100%|##########| 11.1k/11.1k [00:01<00:00, 8.22kB/s]
+Downloading [remove_puncts.fst]:   0%|          | 0.00/16.3k [00:00<?, ?B/s]2026-06-22 09:36:59,652 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:00,941 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=remove_puncts.fst HTTP/1.1" 200 16642
+Downloading [remove_puncts.fst]: 100%|##########| 16.3k/16.3k [00:02<00:00, 5.59kB/s]Downloading [remove_puncts.fst]: 100%|##########| 16.3k/16.3k [00:02<00:00, 5.58kB/s]
+Downloading [tag_oov.fst]:   0%|          | 0.00/458k [00:00<?, ?B/s]2026-06-22 09:37:02,652 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:05,168 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=tag_oov.fst HTTP/1.1" 200 468802
+Downloading [tag_oov.fst]: 100%|##########| 458k/458k [00:04<00:00, 96.7kB/s]Downloading [tag_oov.fst]: 100%|##########| 458k/458k [00:04<00:00, 96.4kB/s]
+Downloading [en/itn/tagger.fst]:   0%|          | 0.00/834k [00:00<?, ?B/s]2026-06-22 09:37:07,544 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:08,561 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=en%2Fitn%2Ftagger.fst HTTP/1.1" 200 854314
+Downloading [en/itn/tagger.fst]: 100%|##########| 834k/834k [00:02<00:00, 385kB/s]Downloading [en/itn/tagger.fst]: 100%|##########| 834k/834k [00:02<00:00, 382kB/s]
+Downloading [zh/itn/tagger.fst]:   0%|          | 0.00/0.98M [00:00<?, ?B/s]2026-06-22 09:37:09,808 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:11,877 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=zh%2Fitn%2Ftagger.fst HTTP/1.1" 200 1029518
+Downloading [zh/itn/tagger.fst]: 100%|##########| 0.98M/0.98M [00:04<00:00, 211kB/s]Downloading [zh/itn/tagger.fst]: 100%|##########| 0.98M/0.98M [00:04<00:00, 211kB/s]
+Downloading [zh/tn/tagger.fst]:   0%|          | 0.00/1.03M [00:00<?, ?B/s]2026-06-22 09:37:14,724 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:15,671 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=zh%2Ftn%2Ftagger.fst HTTP/1.1" 200 1075582
+Downloading [zh/tn/tagger.fst]:  97%|#########7| 1.00M/1.03M [00:03<00:00, 324kB/s]Downloading [zh/tn/tagger.fst]: 100%|##########| 1.03M/1.03M [00:03<00:00, 332kB/s]
+Downloading [en/tn/tagger.fst]:   0%|          | 0.00/5.14M [00:00<?, ?B/s]2026-06-22 09:37:17,984 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:18,969 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=en%2Ftn%2Ftagger.fst HTTP/1.1" 200 5389722
+Downloading [en/tn/tagger.fst]:  19%|#9        | 1.00M/5.14M [00:05<00:20, 209kB/s]Downloading [en/tn/tagger.fst]:  39%|###8      | 2.00M/5.14M [00:07<00:10, 318kB/s]Downloading [en/tn/tagger.fst]:  58%|#####8    | 3.00M/5.14M [00:08<00:05, 409kB/s]Downloading [en/tn/tagger.fst]:  78%|#######7  | 4.00M/5.14M [00:10<00:02, 456kB/s]Downloading [en/tn/tagger.fst]:  97%|#########7| 5.00M/5.14M [00:12<00:00, 485kB/s]Downloading [en/tn/tagger.fst]: 100%|##########| 5.14M/5.14M [00:14<00:00, 391kB/s]Downloading [en/tn/tagger.fst]: 100%|##########| 5.14M/5.14M [00:14<00:00, 385kB/s]
+Downloading [ja/itn/tagger.fst]:   0%|          | 0.00/262k [00:00<?, ?B/s]2026-06-22 09:37:32,032 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:32,963 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=ja%2Fitn%2Ftagger.fst HTTP/1.1" 200 268730
+Downloading [ja/itn/tagger.fst]: 100%|##########| 262k/262k [00:01<00:00, 139kB/s]Downloading [ja/itn/tagger.fst]: 100%|##########| 262k/262k [00:01<00:00, 138kB/s]
+Downloading [ja/tn/tagger.fst]:   0%|          | 0.00/389k [00:00<?, ?B/s]2026-06-22 09:37:34,001 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:34,854 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=ja%2Ftn%2Ftagger.fst HTTP/1.1" 200 398730
+Downloading [ja/tn/tagger.fst]: 100%|##########| 389k/389k [00:01<00:00, 236kB/s]Downloading [ja/tn/tagger.fst]: 100%|##########| 389k/389k [00:01<00:00, 236kB/s]
+Downloading [ja/itn/tagger_enable_0_to_9.fst]:   0%|          | 0.00/238k [00:00<?, ?B/s]2026-06-22 09:37:35,714 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:36,521 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=ja%2Fitn%2Ftagger_enable_0_to_9.fst HTTP/1.1" 200 243586
+Downloading [ja/itn/tagger_enable_0_to_9.fst]: 100%|##########| 238k/238k [00:01<00:00, 170kB/s]Downloading [ja/itn/tagger_enable_0_to_9.fst]: 100%|##########| 238k/238k [00:01<00:00, 168kB/s]
+Downloading [zh/itn/tagger_enable_0_to_9.fst]:   0%|          | 0.00/0.99M [00:00<?, ?B/s]2026-06-22 09:37:37,188 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:37,986 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=zh%2Fitn%2Ftagger_enable_0_to_9.fst HTTP/1.1" 200 1038106
+Downloading [zh/itn/tagger_enable_0_to_9.fst]: 100%|##########| 0.99M/0.99M [00:02<00:00, 482kB/s]Downloading [zh/itn/tagger_enable_0_to_9.fst]: 100%|##########| 0.99M/0.99M [00:02<00:00, 479kB/s]
+Downloading [traditional_to_simple.fst]:   0%|          | 0.00/392k [00:00<?, ?B/s]2026-06-22 09:37:39,382 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:41,025 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=traditional_to_simple.fst HTTP/1.1" 200 401134
+Downloading [traditional_to_simple.fst]: 100%|##########| 392k/392k [00:03<00:00, 109kB/s]Downloading [traditional_to_simple.fst]: 100%|##########| 392k/392k [00:03<00:00, 108kB/s]
+Downloading [en/tn/verbalizer.fst]:   0%|          | 0.00/2.09M [00:00<?, ?B/s]2026-06-22 09:37:43,096 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:44,024 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=en%2Ftn%2Fverbalizer.fst HTTP/1.1" 200 2194398
+Downloading [en/tn/verbalizer.fst]:  48%|####7     | 1.00M/2.09M [00:05<00:05, 207kB/s]Downloading [en/tn/verbalizer.fst]:  96%|#########5| 2.00M/2.09M [00:10<00:00, 198kB/s]Downloading [en/tn/verbalizer.fst]: 100%|##########| 2.09M/2.09M [00:11<00:00, 195kB/s]Downloading [en/tn/verbalizer.fst]: 100%|##########| 2.09M/2.09M [00:11<00:00, 197kB/s]
+Downloading [en/itn/verbalizer.fst]:   0%|          | 0.00/238k [00:00<?, ?B/s]2026-06-22 09:37:54,246 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:55,200 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=en%2Fitn%2Fverbalizer.fst HTTP/1.1" 200 243278
+Downloading [en/itn/verbalizer.fst]: 100%|##########| 238k/238k [00:01<00:00, 148kB/s]Downloading [en/itn/verbalizer.fst]: 100%|##########| 238k/238k [00:01<00:00, 148kB/s]
+Downloading [zh/itn/verbalizer.fst]:   0%|          | 0.00/85.1k [00:00<?, ?B/s]2026-06-22 09:37:55,904 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:57,917 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=zh%2Fitn%2Fverbalizer.fst HTTP/1.1" 200 87098
+Downloading [zh/itn/verbalizer.fst]: 100%|##########| 85.1k/85.1k [00:02<00:00, 33.4kB/s]Downloading [zh/itn/verbalizer.fst]: 100%|##########| 85.1k/85.1k [00:02<00:00, 33.3kB/s]
+Downloading [ja/itn/verbalizer.fst]:   0%|          | 0.00/92.9k [00:00<?, ?B/s]2026-06-22 09:37:58,552 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:37:59,562 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=ja%2Fitn%2Fverbalizer.fst HTTP/1.1" 200 95090
+Downloading [ja/itn/verbalizer.fst]: 100%|##########| 92.9k/92.9k [00:01<00:00, 68.2kB/s]Downloading [ja/itn/verbalizer.fst]: 100%|##########| 92.9k/92.9k [00:01<00:00, 68.0kB/s]
+Downloading [ja/tn/verbalizer.fst]:   0%|          | 0.00/84.9k [00:00<?, ?B/s]2026-06-22 09:37:59,974 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:38:00,939 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=ja%2Ftn%2Fverbalizer.fst HTTP/1.1" 200 86902
+Downloading [ja/tn/verbalizer.fst]: 100%|##########| 84.9k/84.9k [00:01<00:00, 71.5kB/s]Downloading [ja/tn/verbalizer.fst]: 100%|##########| 84.9k/84.9k [00:01<00:00, 71.5kB/s]
+Downloading [zh/tn/verbalizer.fst]:   0%|          | 0.00/85.6k [00:00<?, ?B/s]2026-06-22 09:38:01,208 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:38:02,811 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=zh%2Ftn%2Fverbalizer.fst HTTP/1.1" 200 87702
+Downloading [zh/tn/verbalizer.fst]: 100%|##########| 85.6k/85.6k [00:02<00:00, 34.7kB/s]Downloading [zh/tn/verbalizer.fst]: 100%|##########| 85.6k/85.6k [00:02<00:00, 34.6kB/s]
+Downloading [zh/tn/verbalizer_remove_erhua.fst]:   0%|          | 0.00/85.6k [00:00<?, ?B/s]2026-06-22 09:38:03,775 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:38:04,832 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo?Revision=master&FilePath=zh%2Ftn%2Fverbalizer_remove_erhua.fst HTTP/1.1" 200 87702
+Downloading [zh/tn/verbalizer_remove_erhua.fst]: 100%|##########| 85.6k/85.6k [00:03<00:00, 25.1kB/s]Downloading [zh/tn/verbalizer_remove_erhua.fst]: 100%|##########| 85.6k/85.6k [00:03<00:00, 25.0kB/s]
+2026-06-22 09:38:07,860 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-06-22 09:38:08,917 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 222
+2026-06-22 09:38:09,244 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+2026-06-22 09:38:09,682 INFO use wetext frontend
+  0%|          | 0/1 [00:00<?, ?it/s]2026-06-22 09:38:15,763 INFO synthesis text API smoke test.
+C:\Users\eMitchell109\Documents\Local LLM chat\cosyvoice3\.venv\lib\site-packages\transformers\integrations\sdpa_attention.py:54: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at ..\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:455.)
+  attn_output = torch.nn.functional.scaled_dot_product_attention(
+2026-06-22 09:38:17,996 INFO yield speech len 1.4, rtf 1.5953971658434187
+100%|##########| 1/1 [00:06<00:00,  6.14s/it]100%|##########| 1/1 [00:06<00:00,  6.14s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]2026-06-22 09:41:30,814 INFO synthesis text Warm API timing check.
+2026-06-22 09:41:32,117 INFO yield speech len 0.8, rtf 1.6283804178237915
+100%|##########| 1/1 [00:04<00:00,  4.63s/it]100%|##########| 1/1 [00:04<00:00,  4.63s/it]
+  0%|          | 0/1 [00:00<?, ?it/s]2026-06-22 09:41:45,011 INFO synthesis text Warm API timing check.
+2026-06-22 09:41:46,918 INFO yield speech len 1.24, rtf 1.5375000815237723
+100%|##########| 1/1 [00:05<00:00,  5.47s/it]100%|##########| 1/1 [00:05<00:00,  5.48s/it]

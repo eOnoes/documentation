@@ -1,0 +1,7 @@
+INFO:     127.0.0.1:50760 - "GET /health HTTP/1.1" 200 OK
+Downloading Model to directory: C:\Users\eMitchell109\.cache\modelscope\hub\pengzhendong/wetext
+Downloading Model to directory: C:\Users\eMitchell109\.cache\modelscope\hub\pengzhendong/wetext
+INFO:     127.0.0.1:50772 - "POST /v1/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56180 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64819 - "POST /v1/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64839 - "POST /v1/tts HTTP/1.1" 200 OK

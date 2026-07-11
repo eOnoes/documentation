@@ -18,7 +18,7 @@
 
 ```sql
 -- ============================================================
--- Tripp.System v7.0 — Production Schema
+-- Tripp.System v8.1 — Production Schema
 -- ============================================================
 -- PRAGMA settings
 PRAGMA journal_mode=WAL;
@@ -365,15 +365,30 @@ BEGIN
 END;
 
 -- 5b. Hash chain enforcement (reject forged previous_hash)
-CREATE TRIGGER audit_hash_chain
+CREATE TRIGGER audit_hash_chain_first
 BEFORE INSERT ON audit_log
-WHEN NEW.previous_hash != '0000000000000000000000000000000000000000000000000000000000000000'
+WHEN NOT EXISTS (SELECT 1 FROM audit_log)
+  AND NEW.previous_hash != '0000000000000000000000000000000000000000000000000000000000000000'
+BEGIN
+    SELECT RAISE(ABORT, 'First audit record must use zero seed for previous_hash');
+END;
+
+CREATE TRIGGER audit_hash_chain_verify
+BEFORE INSERT ON audit_log
+WHEN EXISTS (SELECT 1 FROM audit_log)
   AND NEW.previous_hash != (
-    SELECT COALESCE(record_hash, '0000000000000000000000000000000000000000000000000000000000000000')
-    FROM audit_log ORDER BY id DESC LIMIT 1
+    SELECT record_hash FROM audit_log ORDER BY id DESC LIMIT 1
   )
 BEGIN
-    SELECT RAISE(ABORT, 'Audit hash chain broken: previous_hash does not match last record_hash');
+    SELECT RAISE(ABORT, 'previous_hash must match the latest record_hash');
+END;
+
+-- Hash format constraints
+CREATE TRIGGER audit_hash_format
+BEFORE INSERT ON audit_log
+WHEN length(NEW.previous_hash) != 64 OR NEW.previous_hash GLOB '*[^0-9a-f]*'
+BEGIN
+    SELECT RAISE(ABORT, 'previous_hash must be 64-char lowercase hex');
 END;
 
 -- 6. Broadcast delivery trigger (create per-recipient records)
@@ -494,7 +509,7 @@ END;
 
 ---
 
-## PRODUCTION CODE v7.0
+## PRODUCTION CODE v8.1
 
 ### Database & Utilities
 
@@ -950,7 +965,7 @@ class MessageProcessor:
 
 ---
 
-## SELF-CONTAINED ADVERSARIAL TESTS v7.0
+## SELF-CONTAINED ADVERSARIAL TESTS v8.1
 
 These tests include the COMPLETE schema inline and run against a temp file-backed WAL database. No external schema file required.
 
@@ -963,7 +978,7 @@ import hashlib
 import json
 import threading
 
-# ── Inline schema (COMPLETE DDL from v7.0 above) ──────────────
+# ── Inline schema (COMPLETE DDL from v8.1 above) ──────────────
 SCHEMA_SQL = r"""
 PRAGMA journal_mode=WAL;
 PRAGMA foreign_keys=ON;
@@ -1101,8 +1116,16 @@ CREATE TRIGGER enforce_signature BEFORE INSERT ON audit_log WHEN NEW.actor!='sys
     SELECT RAISE(ABORT,'signature required (64-char hex)');
 END;
 
-CREATE TRIGGER audit_hash_chain BEFORE INSERT ON audit_log WHEN NEW.previous_hash != '0000000000000000000000000000000000000000000000000000000000000000' AND NEW.previous_hash != (SELECT COALESCE(record_hash,'0000000000000000000000000000000000000000000000000000000000000000') FROM audit_log ORDER BY id DESC LIMIT 1) BEGIN
+CREATE TRIGGER audit_hash_chain_first BEFORE INSERT ON audit_log WHEN NOT EXISTS (SELECT 1 FROM audit_log) AND NEW.previous_hash != '0000000000000000000000000000000000000000000000000000000000000000' BEGIN
+    SELECT RAISE(ABORT,'first record must use zero seed');
+END;
+
+CREATE TRIGGER audit_hash_chain_verify BEFORE INSERT ON audit_log WHEN EXISTS (SELECT 1 FROM audit_log) AND NEW.previous_hash != (SELECT record_hash FROM audit_log ORDER BY id DESC LIMIT 1) BEGIN
     SELECT RAISE(ABORT,'hash chain broken');
+END;
+
+CREATE TRIGGER audit_hash_format BEFORE INSERT ON audit_log WHEN length(NEW.previous_hash)!=64 OR NEW.previous_hash GLOB '*[^0-9a-f]*' BEGIN
+    SELECT RAISE(ABORT,'previous_hash must be 64-char hex');
 END;
 
 CREATE TRIGGER broadcast_delivery AFTER INSERT ON messages WHEN NEW.recipient='all' BEGIN
@@ -1370,17 +1393,20 @@ class TestConcurrency(unittest.TestCase):
         os.unlink(self.path)
 
     def test_competing_claims(self):
-        _insert_msg(self.db1, 'cc1', sender='eddie', recipient='all')
+        _insert_msg(self.db1, 'cc1', sender='eddie', recipient='echo')
         self.db1.commit()
-        self.db1.execute("BEGIN IMMEDIATE")
+        # Get the one delivery's ID
+        did = self.db1.execute("SELECT id FROM message_deliveries WHERE message_id='cc1'").fetchone()[0]
+        # Worker 1 claims it
         self.db1.execute(
             """UPDATE message_deliveries SET state='claimed',claimed_by='echo'
-               WHERE id=(SELECT id FROM message_deliveries WHERE message_id='cc1' AND state='pending' LIMIT 1)"""
+               WHERE id=? AND state='pending'""", (did,)
         )
         self.db1.commit()
+        # Worker 2 tries to claim the SAME delivery by ID
         result = self.db2.execute(
             """UPDATE message_deliveries SET state='claimed',claimed_by='tripp'
-               WHERE id=(SELECT id FROM message_deliveries WHERE message_id='cc1' AND state='pending' LIMIT 1)"""
+               WHERE id=? AND state='pending'""", (did,)
         )
         self.db2.commit()
         self.assertEqual(result.rowcount, 0)
@@ -1445,7 +1471,7 @@ if __name__ == '__main__':
 
 ---
 
-## PRODUCTION CHECKLIST v7.0
+## PRODUCTION CHECKLIST v8.1
 
 - [x] Schema DDL executes cleanly (all tables, indexes, triggers, seeds)
 - [x] Authorization enforced at INSERT via trigger (all message types seeded)
@@ -1469,8 +1495,8 @@ if __name__ == '__main__':
 - [x] Graceful degradation (audit failure = halt)
 - [x] Per-agent HMAC keys
 - [x] System actor for non-agent events
-- [x] 19 self-contained adversarial tests (inline schema, file-backed DB)
-- [x] Tests: authorization (2), signatures (5), immutability (5), broadcast (5), cancellation (1), expiration (3), concurrency (1), hash chain (2), message types (1) = 25 total
+- [x] 23 self-contained adversarial tests (inline schema, file-backed DB)
+- [x] Tests: authorization (2), signatures (4), immutability (5), broadcast (5), cancellation (1), expiration (2), concurrency (1), hash chain (2), message types (1) = 23 total
 - [x] Production checklist accurate (v8.1 — all patches integrated into schema)
 
 **v8.1 READY FOR CODEX AUDIT.** 🛡️💚

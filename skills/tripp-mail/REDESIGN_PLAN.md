@@ -782,12 +782,10 @@ class Worker:
                 (d['message_id'],),
             ).fetchone()
             if parent and parent['state'] == 'cancelled':
-                Database.rollback()
-                # Move delivery to cancelled state
-                db2 = Database.begin()
-                db2.execute(
-                    "UPDATE message_deliveries SET state='cancelled',cancelled_at=? WHERE id=? AND state='claimed'",
-                    (now_utc(), d['id']),
+                # Use expired + last_error since delivery table has no cancelled state
+                db.execute(
+                    "UPDATE message_deliveries SET state='expired', last_error=? WHERE id=? AND state='claimed'",
+                    ('Parent message cancelled', d['id']),
                 )
                 Database.commit()
                 return
@@ -895,13 +893,20 @@ class WorkerSupervisor:
                 backoff = 1  # Reset backoff on successful process
             except Exception as e:
                 print(f"Worker {wid} crashed: {e}. Restarting in {backoff}s...")
-                time.sleep(backoff)
-                backoff = min(backoff * 2, max_backoff)
                 try:
-                    Database.close()  # Close stale connection
+                    Database.close()  # Close BEFORE sleeping to release locks
                 except Exception:
                     pass
-        Database.close()
+                # Interruptible sleep — checks shutdown every second
+                for _ in range(backoff):
+                    if self._shutdown.is_set():
+                        return
+                    time.sleep(1)
+                backoff = min(backoff * 2, max_backoff)
+        try:
+            Database.close()
+        except Exception:
+            pass
 
     def shutdown(self):
         self._shutdown.set()

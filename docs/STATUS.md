@@ -18,7 +18,11 @@
 
 ## Cyony (VPS)
 
-- **Status:** Checking...
+- **Status:** ✅ MIGRATED
+- **Memory:** `memory/cyony.md` — Created
+- **Inbox:** `inbox/cyony/` — Created
+- **Voice Pipeline:** LIVE — 10 moods, Standard Chatterbox model
+- **Action Needed:** Migrate relevant skills to skills/ folder
 
 ## Shared
 

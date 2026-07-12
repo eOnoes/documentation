@@ -114,6 +114,11 @@ class UUIDv4ValidationTests(unittest.TestCase):
     def test_rejection_empty(self):
         self.assertFalse(PROD["validate_message_id"](""))
 
+    def test_rejection_non_string(self):
+        for value in (None, 0, b"0" * 32):
+            with self.subTest(value=value):
+                self.assertFalse(PROD["validate_message_id"](value))
+
     def test_rejection_uuidv1(self):
         # UUIDv1 has version nibble = 1, not 4
         mid = "10000000000040008000000000000000"  # version nibble = 1

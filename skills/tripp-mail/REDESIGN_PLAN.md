@@ -581,7 +581,7 @@ class Database:
     def configure(cls, db_path: str):
         """Configure one native absolute path before any worker threads start."""
         if os.name == 'nt' and db_path.startswith('/'):
-            raise ValueError("Use a native Windows path (for example C:\data\tripp.db), not an MSYS path")
+            raise ValueError("Use a native Windows path (for example C:\\data\\tripp.db), not an MSYS path")
         path = Path(os.path.expandvars(os.path.expanduser(db_path)))
         if not path.is_absolute():
             raise ValueError("TRIPP_DB_PATH must be an absolute native-OS path")
@@ -696,6 +696,8 @@ def generate_message_id() -> str:
 
 def validate_message_id(mid: str) -> bool:
     """Return ``True`` if *mid* is a valid 32-char lowercase UUIDv4 hex string."""
+    if not isinstance(mid, str):
+        return False
     if len(mid) != 32:
         return False
     if not mid.islower():
@@ -925,7 +927,7 @@ class Worker:
             self.audit.append(d['message_id'], d['id'], 'delivered',
                               self.agent_id, {'to': d['recipient_id']}, db)
             Database.commit()
-            return len(expired)
+            return
         except Exception:
             Database.rollback()
             raise
@@ -980,7 +982,7 @@ class Worker:
             self.audit.append(d['message_id'], d['id'], 'dead_lettered',
                               self.agent_id, {}, db)
             Database.commit()
-            return len(expired)
+            return
         except Exception:
             Database.rollback()
             raise

@@ -146,6 +146,50 @@ class Round20ProductionTests(unittest.TestCase):
         self.assertEqual((row["state"], row["retry_count"], row["delivered_at"]),
                          ("retry_scheduled", 1, None))
 
+    def test_successful_adapter_completes_without_post_commit_crash(self):
+        insert_message(self.db, "success-1")
+        self.db.commit()
+        self.db.close()
+        PROD["Database"].configure(self.path)
+        audit = PROD["AuditService"]({"echo": b"round20-key"})
+        calls = []
+
+        def successful_adapter(delivery, operation_key):
+            calls.append(operation_key)
+
+        worker = PROD["Worker"]("echo", audit, successful_adapter)
+        self.assertTrue(worker.process_one())
+        self.assertEqual(len(calls), 1)
+        row = PROD["Database"].get_connection().execute(
+            "SELECT state,delivered_at FROM message_deliveries WHERE message_id='success-1'"
+        ).fetchone()
+        self.assertEqual(row["state"], "delivered")
+        self.assertIsNotNone(row["delivered_at"])
+        self.assertTrue(audit.verify(PROD["Database"].get_connection()))
+        PROD["Database"].close()
+        self.db = connect(self.path)
+
+    def test_permanent_failure_dead_letters_without_post_commit_crash(self):
+        insert_message(self.db, "permanent-1")
+        self.db.commit()
+        self.db.close()
+        PROD["Database"].configure(self.path)
+        audit = PROD["AuditService"]({"echo": b"round20-key"})
+
+        def permanently_failing_adapter(delivery, operation_key):
+            raise PROD["PermanentError"]("invalid destination")
+
+        worker = PROD["Worker"]("echo", audit, permanently_failing_adapter)
+        self.assertTrue(worker.process_one())
+        row = PROD["Database"].get_connection().execute(
+            "SELECT state,last_error FROM message_deliveries WHERE message_id='permanent-1'"
+        ).fetchone()
+        self.assertEqual((row["state"], row["last_error"]),
+                         ("dead_lettered", "quarantine"))
+        self.assertTrue(audit.verify(PROD["Database"].get_connection()))
+        PROD["Database"].close()
+        self.db = connect(self.path)
+
     def test_reaper_uses_bounded_batches_under_load(self):
         for i in range(250):
             insert_message(self.db, f"reap-{i}")

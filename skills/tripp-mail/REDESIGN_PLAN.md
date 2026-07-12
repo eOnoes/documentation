@@ -267,6 +267,13 @@ CREATE TABLE audit_log (
     FOREIGN KEY (actor) REFERENCES agents(id)
 );
 
+CREATE TABLE schema_version (
+    version INTEGER PRIMARY KEY,
+    applied_at TEXT NOT NULL DEFAULT (datetime('now')),
+    description TEXT
+);
+INSERT INTO schema_version (version, description) VALUES (1, 'Initial schema');
+
 -- Worker health
 CREATE TABLE worker_health (
     worker_id TEXT PRIMARY KEY,
@@ -1557,6 +1564,66 @@ class TestRegressionRound17(unittest.TestCase):
         row = self.db.execute("SELECT version FROM schema_version WHERE version=1").fetchone()
         self.assertIsNotNone(row)
 
+    def test_reaper_skips_cancelled_parent(self):
+        """LeaseReaper does NOT retry claims under a cancelled parent."""
+        _insert_msg(self.db, 'r4', sender='eddie', recipient='echo')
+        self.db.commit()
+        did = self.db.execute("SELECT id FROM message_deliveries WHERE message_id='r4'").fetchone()[0]
+        # Claim it
+        self.db.execute(
+            "UPDATE message_deliveries SET state='claimed',claimed_by='echo',lease_expires_at='2020-01-01 00:00:00',lease_fencing_token='tok' WHERE id=?", (did,)
+        )
+        # Cancel parent BEFORE lease expires
+        self.db.execute("UPDATE messages SET state='cancelled' WHERE id='r4'")
+        self.db.commit()
+        # Reaper query: must NOT find this delivery (parent is cancelled)
+        expired = self.db.execute(
+            """SELECT id FROM message_deliveries d
+               WHERE d.state='claimed' AND d.lease_expires_at < ?
+                 AND NOT EXISTS (
+                   SELECT 1 FROM messages m WHERE m.id=d.message_id AND m.state IN ('cancelled','expired')
+                 )""", ('2026-12-31 23:59:59',)
+        ).fetchall()
+        self.assertEqual(len(expired), 0, "Reaper must not touch claims under cancelled parent")
+
+    def test_reaper_skips_expired_parent(self):
+        """LeaseReaper does NOT retry claims under an expired parent."""
+        _insert_msg(self.db, 'r5', sender='eddie', recipient='tripp')
+        self.db.commit()
+        did = self.db.execute("SELECT id FROM message_deliveries WHERE message_id='r5'").fetchone()[0]
+        self.db.execute(
+            "UPDATE message_deliveries SET state='claimed',claimed_by='tripp',lease_expires_at='2020-01-01 00:00:00',lease_fencing_token='tok' WHERE id=?", (did,)
+        )
+        self.db.execute("UPDATE messages SET state='expired' WHERE id='r5'")
+        self.db.commit()
+        expired = self.db.execute(
+            """SELECT id FROM message_deliveries d
+               WHERE d.state='claimed' AND d.lease_expires_at < ?
+                 AND NOT EXISTS (
+                   SELECT 1 FROM messages m WHERE m.id=d.message_id AND m.state IN ('cancelled','expired')
+                 )""", ('2026-12-31 23:59:59',)
+        ).fetchall()
+        self.assertEqual(len(expired), 0, "Reaper must not touch claims under expired parent")
+
+    def test_reaper_finds_active_parent(self):
+        """LeaseReaper DOES find claims under an active parent."""
+        _insert_msg(self.db, 'r6', sender='eddie', recipient='echo')
+        self.db.commit()
+        did = self.db.execute("SELECT id FROM message_deliveries WHERE message_id='r6'").fetchone()[0]
+        self.db.execute(
+            "UPDATE message_deliveries SET state='claimed',claimed_by='echo',lease_expires_at='2020-01-01 00:00:00',lease_fencing_token='tok' WHERE id=?", (did,)
+        )
+        # Parent stays pending (active)
+        self.db.commit()
+        expired = self.db.execute(
+            """SELECT id FROM message_deliveries d
+               WHERE d.state='claimed' AND d.lease_expires_at < ?
+                 AND NOT EXISTS (
+                   SELECT 1 FROM messages m WHERE m.id=d.message_id AND m.state IN ('cancelled','expired')
+                 )""", ('2026-12-31 23:59:59',)
+        ).fetchall()
+        self.assertEqual(len(expired), 1, "Reaper MUST find claims under active parent")
+
 
 if __name__ == '__main__':
     unittest.main()
@@ -1582,6 +1649,10 @@ if __name__ == '__main__':
 - [x] Aggregation cannot overwrite terminal states (expired/cancelled/dead_lettered)
 - [x] Connection-per-thread with ownership validation (RuntimeError)
 - [x] Lease fencing on every claim/deliver/retry/quarantine
+- [x] Schema versioning (schema_version table with v1)
+- [x] Lease reaper skips terminal parents (cancelled/expired)
+- [x] Regression tests (TestRegressionRound17: 4 tests)
+- [x] Production and test schemas synchronized
 - [x] SQLite-compatible math (no ** operator)
 - [x] Deterministic event IDs with sequence counter
 - [x] Worker crash recovery (supervisor restarts)

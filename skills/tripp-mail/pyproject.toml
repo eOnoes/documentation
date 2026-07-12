@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tripp-system"
+version = "8.5.0"
+description = "Lease-fenced, audited SQLite message delivery"
+requires-python = ">=3.10"
+dependencies = ["argon2-cffi>=23.1.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+tripp-system = "tripp_system.cli:main"
+
+[tool.setuptools.package-data]
+tripp_system = ["schema.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

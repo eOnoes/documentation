@@ -1,0 +1,41 @@
+{
+  "id": "mrjgdzhk-w501h",
+  "kind": "query",
+  "input": "Tell me about the Deep system and the enrichment pipeline.",
+  "startedAt": "2026-07-13T16:44:39.046Z",
+  "durationMs": 37858,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "search_knowledge",
+      "summary": "enrichment pipeline",
+      "paths": [
+        "/system/deep-architecture.md",
+        "/system/tripp-brand.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "search_knowledge",
+      "summary": "Deep system architecture",
+      "paths": [
+        "/system/deep-architecture.md",
+        "/system/tripp-brand.md",
+        "/personas/eddie.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "read_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    }
+  ],
+  "answer": "## Deep Knowledge System\n\n**Deep** (formerly called \"understory\") is a multi-agent knowledge system with a shared brain architecture. The dashboard runs at http://100.72.250.65:3800 and uses the [Tripp Brand Identity](/system/tripp-brand.md) dark-first design with lemon green accents.\n\n### Core Components\n\n**Atlas (Librarian)**\n- The knowledge curator inside Deep\n- Runs on Ollama cloud model `qwen3.5:397b-cloud` (397B parameters)\n- Zero VRAM cost via cloud subscription\n- Tools: `memory_query`, …",
+  "notation": "search \"enrichment pipeline\" (2) → search \"Deep system architecture\" (3) → read deep-architecture.md → ✓"
+}

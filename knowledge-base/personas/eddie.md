@@ -11,7 +11,7 @@ tags:
   - github
 timestamp: '2026-07-13T19:39:19.273Z'
 ---
-Eddie is a visionary based in Memphis, TN. He is not a coder and delegates all technical work to his AI agents, whom he calls his "fam." He works at a heat treating company — his projects HTOL, MOL.Base, and QOL are work-related tools.
+Eddie is a visionary based in Memphis, TN. He is not a coder and delegates all technical work to his AI agents, whom he calls his "fam." He works at **Nucor Steel Memphis** — a steel mill that melts scrap metal in an electric arc furnace and rolls it into new steel shapes. His projects HTOL, MOL.Base, and QOL are work-related tools.
 
 ## Preferences
 
@@ -53,7 +53,7 @@ Eddie uses **Tailscale for all networking** across his devices.
 
 # GitHub Organization
 
-Eddie's GitHub organization is **eOnoes**. It contains 11 repositories across public and private visibility. Eddie works in heat treating — **HTOL**, **MOL.Base**, and **QOL** are work-related tools for his heat treating company.
+Eddie's GitHub organization is **eOnoes**. It contains 11 repositories across public and private visibility. Eddie works at **Nucor Steel Memphis** — a steel mill that melts scrap metal and rolls it into new steel shapes. **HTOL**, **MOL.Base**, and **QOL** are work-related tools.
 
 ## Public Repositories (5)
 
@@ -92,7 +92,7 @@ Eddie's GitHub organization is **eOnoes**. It contains 11 repositories across pu
 
 - **audit-orchestrator** is a multi-agent workflow tool and predecessor to the current orchestration system
 - **Tripp.Mind** was the original knowledge system, now replaced by [Deep](/system/deep-architecture.md)
-- Work-related repos (heat treating): **HTOL**, **MOL.Base**, **QOL**
+- Work-related repos (Nucor Steel Memphis): **HTOL**, **MOL.Base**, **QOL**
 
 See [Deep Knowledge System architecture](/system/deep-architecture.md) for the current system design.
 
@@ -100,7 +100,7 @@ See [Deep Knowledge System architecture](/system/deep-architecture.md) for the c
 
 - **audit-orchestrator** is a multi-agent workflow tool and predecessor to the current orchestration system
 - **Tripp.Mind** was the original knowledge system, now replaced by [Deep](/system/deep-architecture.md)
-- Work-related repos (heat treating): **HTOL**, **MOL.Base**, **QOL**
+- Work-related repos (Nucor Steel Memphis): **HTOL**, **MOL.Base**, **QOL**
 - For detailed repository status and technical information, see [eOnoes GitHub Projects](/system/github-projects.md).
 
 See [Deep Knowledge System architecture](/system/deep-architecture.md) for the current system design.

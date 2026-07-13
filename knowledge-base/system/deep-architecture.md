@@ -9,7 +9,7 @@ tags:
   - knowledge-system
   - multi-agent
   - architecture
-timestamp: '2026-07-13T16:44:06.566Z'
+timestamp: '2026-07-13T19:40:01.512Z'
 ---
 **Deep** (formerly understory) is a multi-agent knowledge system with a shared brain architecture.
 
@@ -66,3 +66,18 @@ See [Eddie's technical setup](/personas/eddie.md) for device IPs and hardware de
 **Deep** (formerly understory) is a multi-agent knowledge system with a shared brain architecture.
 
 **Dashboard:** http://100.72.250.65:3800 — styled with [Tripp Brand Identity](/system/tripp-brand.md) colors.
+
+# Agent Fleet
+
+### Agent Fleet
+
+| Agent | Role | Platform |
+|-------|------|----------|
+| **Echo** | Supervisor | Local Hermes on PC |
+| **Tripp** | Supervisor | OpenClaw on VPS |
+| **Cyony** | Supervisor | Hermes on VPS Docker |
+| **Codex** | Builder | OpenAI coding agent |
+| **Kimi** | Builder | Moonshot coding agent |
+| **Atlas** | Librarian | Inside Deep |
+
+For how these agents collaborate on GitHub tasks (audit patterns, delegation workflows), see [GitHub Workflow Patterns](/system/github-workflows.md).

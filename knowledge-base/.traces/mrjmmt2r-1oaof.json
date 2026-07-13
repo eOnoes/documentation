@@ -1,0 +1,88 @@
+{
+  "id": "mrjmmt2r-1oaof",
+  "kind": "mutation",
+  "input": "Persist the following knowledge into the knowledge base. First search for related or owning concepts. If this is an attribute or detail of an existing concept, patch it into that concept rather than creating a new one. Only a distinct stand-alone entity or substantial topic gets its own concept — a…",
+  "startedAt": "2026-07-13T19:39:36.081Z",
+  "durationMs": 30114,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "search_knowledge",
+      "summary": "github",
+      "paths": [
+        "/system/github-projects.md",
+        "/personas/eddie.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "search_knowledge",
+      "summary": "agent orchestration",
+      "paths": [
+        "/system/deep-architecture.md",
+        "/personas/eddie.md",
+        "/system/github-projects.md",
+        "/system/tripp-brand.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "search_knowledge",
+      "summary": "workflow pattern",
+      "paths": [
+        "/system/github-projects.md",
+        "/personas/eddie.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 4,
+      "tool": "read_concept",
+      "summary": "/system/github-projects.md",
+      "paths": [
+        "/system/github-projects.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 5,
+      "tool": "read_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 6,
+      "tool": "write_concept",
+      "summary": "/system/github-workflows.md",
+      "paths": [
+        "/system/github-workflows.md"
+      ],
+      "write": true
+    },
+    {
+      "seq": 7,
+      "tool": "patch_concept",
+      "summary": "/system/github-projects.md",
+      "paths": [
+        "/system/github-projects.md"
+      ],
+      "write": true
+    },
+    {
+      "seq": 8,
+      "tool": "patch_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": true
+    }
+  ],
+  "answer": "**Changes made:**\n\n1. **Created** `/system/github-workflows.md` — New concept documenting Echo's GitHub role, audit patterns, Codex/Kimi delegation, branch protection rules, and build languages across the eOnoes org.\n\n2. **Patched** `/system/github-projects.md` — Added reference to the new workflow patterns document in the Infrastructure section.\n\n3. **Patched** `/system/deep-architecture.md` — Added reference to the workflow patterns document in the Agent Fleet section.\n\nAll three files are no…",
+  "notation": "search \"github\" (2) → search \"agent orchestration\" (4) → search \"workflow pattern\" (2) → read github-projects.md → read deep-architecture.md → write github-workflows.md → patch github-projects.md → patch deep-architecture.md → ✓"
+}

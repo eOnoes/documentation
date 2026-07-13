@@ -9,9 +9,9 @@ tags:
   - non-technical
   - cost-conscious
   - github
-timestamp: '2026-07-13T16:44:06.553Z'
+timestamp: '2026-07-13T19:39:19.273Z'
 ---
-Eddie is a visionary based in Memphis, TN. He is not a coder and delegates all technical work to his AI agents, whom he calls his "fam." He works at a heat treating company — his projects HTOL and MOL.Base are work-related tools.
+Eddie is a visionary based in Memphis, TN. He is not a coder and delegates all technical work to his AI agents, whom he calls his "fam." He works at a heat treating company — his projects HTOL, MOL.Base, and QOL are work-related tools.
 
 ## Preferences
 
@@ -51,51 +51,56 @@ Eddie uses **Tailscale for all networking** across his devices.
 - **Tailscale IP:** 100.78.100.31
 - **Primary App:** Telegram
 
-## GitHub Organization
+# GitHub Organization
 
-Eddie's GitHub organization is **eOnoes**. It contains a mix of public and private repositories, including personal/family projects.
+Eddie's GitHub organization is **eOnoes**. It contains 11 repositories across public and private visibility. Eddie works in heat treating — **HTOL**, **MOL.Base**, and **QOL** are work-related tools for his heat treating company.
 
-### Public Repositories
-| Repo | Description | Last Updated |
-|------|-------------|--------------|
-| [eOnoes/documentation](https://github.com/eOnoes/documentation) | Shared documentation hub | 2026-07-13 |
-| [eOnoes/RMOL](https://github.com/eOnoes/RMOL) | RMOL project | 2026-07-13 |
-| [eOnoes/tripp-scenes](https://github.com/eOnoes/tripp-scenes) | Tripp scenes | 2026-07-10 |
-| [eOnoes/SideQuestHQ](https://github.com/eOnoes/SideQuestHQ) | SideQuest HQ | 2026-07-08 |
-| [eOnoes/Fort-Yams](https://github.com/eOnoes/Fort-Yams) | "For the fam" | 2026-07-06 |
+## Public Repositories (5)
 
-### Private Repositories
-| Repo | Description | Last Updated |
-|------|-------------|--------------|
-| [eOnoes/sqhq-android](https://github.com/eOnoes/sqhq-android) | SideQuest HQ Android app | 2026-07-12 |
-| [eOnoes/audit-orchestrator](https://github.com/eOnoes/audit-orchestrator) | Crew audit workflow orchestrator — sequential agent dispatch, 2-round auditing, completion detection, Telegram notifications (predecessor to current orchestration) | 2026-07-05 |
-| [eOnoes/MOL.Base](https://github.com/eOnoes/MOL.Base) | Base app for MOL build projects | 2026-05-22 |
-| [eOnoes/HTOL](https://github.com/eOnoes/HTOL) | Heat Treat Operations Log | 2026-05-04 |
+| Repo | Language | Description | Last Updated |
+|------|----------|-------------|--------------|
+| [eOnoes/documentation](https://github.com/eOnoes/documentation) | — | Shared documentation hub | 2026-07-13 |
+| [eOnoes/RMOL](https://github.com/eOnoes/RMOL) | — | RMOL project | 2026-07-13 |
+| [eOnoes/tripp-scenes](https://github.com/eOnoes/tripp-scenes) | — | Tripp scenes | 2026-07-10 |
+| [eOnoes/SideQuestHQ](https://github.com/eOnoes/SideQuestHQ) | — | SideQuest HQ | 2026-07-08 |
+| [eOnoes/Fort-Yams](https://github.com/eOnoes/Fort-Yams) | — | "For the fam" | 2026-07-06 |
 
-### Knowledge System Repositories
-| Repo | Description | Status |
-|------|-------------|--------|
-| [eOnoes/Tripp.Mind](https://github.com/eOnoes/Tripp.Mind) | Tripp Fleet shared knowledge management (SiYuan + Gateway + Event Bridge) | **Superseded** by Deep (understory) |
+## Private Repositories (6)
 
-### Notes
-- **RMOL** has branch protection enabled — direct push is blocked; work requires pull requests (PR #4 was created by Echo)
+| Repo | Language | Description | Last Updated |
+|------|----------|-------------|--------------|
+| [eOnoes/sqhq-android](https://github.com/eOnoes/sqhq-android) | — | SideQuest HQ Android app — recent work: terminal redesign, CI workflow | 2026-07-12 |
+| [eOnoes/audit-orchestrator](https://github.com/eOnoes/audit-orchestrator) | — | Crew audit workflow orchestrator — sequential agent dispatch, 2-round auditing, completion detection, Telegram notifications | 2026-07-05 |
+| [eOnoes/MOL.Base](https://github.com/eOnoes/MOL.Base) | — | Base app for MOL build projects (work-related) | 2026-05-22 |
+| [eOnoes/HTOL](https://github.com/eOnoes/HTOL) | — | Heat Treat Operations Log (work-related) | 2026-05-04 |
+| [eOnoes/QOL](https://github.com/eOnoes/QOL) | JavaScript | Quality Operations Log (work-related) | — |
+| [eOnoes/Tripp.Mind](https://github.com/eOnoes/Tripp.Mind) | — | Tripp Fleet shared knowledge management — **Superseded** by [Deep](/system/deep-architecture.md) | — |
+
+## Pull Request History
+
+**RMOL** has branch protection enabled — direct push is blocked; work requires pull requests.
+
+| PR | Status | Notes |
+|----|--------|-------|
+| #4 | Open | Created by Echo |
+| #3 | Merged | — |
+| #2 | Merged | — |
+
+**Total:** 4 PRs
+
+## Notes
+
 - **audit-orchestrator** is a multi-agent workflow tool and predecessor to the current orchestration system
-- **Tripp.Mind** was the original knowledge system, now replaced by Deep (understory)
-
-# Knowledge System Repositories
-
-| Repo | Description | Status |
-|------|-------------|--------|
-| [eOnoes/Tripp.Mind](https://github.com/eOnoes/Tripp.Mind) | Tripp Fleet shared knowledge management (SiYuan + Gateway + Event Bridge) | **Superseded** by [Deep](/system/deep-architecture.md) (formerly understory) |
+- **Tripp.Mind** was the original knowledge system, now replaced by [Deep](/system/deep-architecture.md)
+- Work-related repos (heat treating): **HTOL**, **MOL.Base**, **QOL**
 
 See [Deep Knowledge System architecture](/system/deep-architecture.md) for the current system design.
 
-# Preferences
+# Notes
 
-- **Cost-conscious** — prefers simple, direct instructions
-- **Wants things that "just work"** — no tinkering or configuration overhead
-- **Communicates enthusiastically** — uses phrases like "HELL yea!" and "Incredible....."
-- **Describes symptoms visually** — does not describe technical causes
-- **Brand colors matter deeply** — see [Tripp Brand Identity](/system/tripp-brand.md) for full design system
-- **Mobile-first design** — prefers interfaces optimized for phone use
-- **Voice interaction** — prefers voice over typing when possible
+- **audit-orchestrator** is a multi-agent workflow tool and predecessor to the current orchestration system
+- **Tripp.Mind** was the original knowledge system, now replaced by [Deep](/system/deep-architecture.md)
+- Work-related repos (heat treating): **HTOL**, **MOL.Base**, **QOL**
+- For detailed repository status and technical information, see [eOnoes GitHub Projects](/system/github-projects.md).
+
+See [Deep Knowledge System architecture](/system/deep-architecture.md) for the current system design.

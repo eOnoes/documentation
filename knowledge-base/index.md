@@ -9,4 +9,4 @@ okf_version: "0.1"
 ## Memory Segments
 
 * [personas](personas/) - 1 concept (Persona): Eddie
-* [system](system/) - 2 concepts (Brand Identity, System Architecture): Deep Knowledge System, Tripp Brand Identity
+* [system](system/) - 4 concepts (Brand Identity, System Architecture): Deep Knowledge System, eOnoes GitHub Projects, GitHub Workflow Patterns, …

@@ -2,6 +2,18 @@
 
 ## 2026-07-13
 
+* **Update**: Patched [Deep Knowledge System](/system/deep-architecture.md) Agent Fleet section to reference [GitHub Workflow Patterns](/system/github-workflows.md).
+
+* **Update**: Patched [eOnoes GitHub Projects](/system/github-projects.md) to reference the new [GitHub Workflow Patterns](/system/github-workflows.md) document.
+
+* **Creation**: Added [GitHub Workflow Patterns](/system/github-workflows.md) documenting agent fleet GitHub operations, audit patterns, and delegation workflows.
+
+* **Update**: Added link to new [eOnoes GitHub Projects](/system/github-projects.md) document in Eddie persona.
+
+* **Creation**: Created [eOnoes GitHub Projects](/system/github-projects.md) with detailed status for all repositories in Eddie's organization.
+
+* **Update**: Updated [Eddie persona](/personas/eddie.md) with complete GitHub organization overview (11 repos with languages, privacy, descriptions, activity), RMOL PR history (4 PRs, #4 open, #2/#3 merged), sqhq-android recent work (terminal redesign, CI workflow), and QOL repo (private, JavaScript, work-related).
+
 * **Update**: Updated [Deep Knowledge System](/system/deep-architecture.md) to link dashboard styling to [Tripp Brand Identity](/system/tripp-brand.md).
 
 * **Update**: Updated [Eddie](/personas/eddie.md) preferences section to link to [Tripp Brand Identity](/system/tripp-brand.md) instead of inline color codes.

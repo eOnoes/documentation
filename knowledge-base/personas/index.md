@@ -1,3 +1,3 @@
 # Personas
 
-* [Eddie](eddie.md) - Visionary user in Memphis who delegates to AI agents and prefers simple, direct solutions.
+* [Eddie](eddie.md) - Visionary user in Memphis who delegates to AI agents, prefers simple direct solutions, and uses Tailscale for all networking.

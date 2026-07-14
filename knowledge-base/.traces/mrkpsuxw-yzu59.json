@@ -1,0 +1,55 @@
+{
+  "id": "mrkpsuxw-yzu59",
+  "kind": "mutation",
+  "input": "Persist the following knowledge into the knowledge base. First search for related or owning concepts. If this is an attribute or detail of an existing concept, patch it into that concept rather than creating a new one. Only a distinct stand-alone entity or substantial topic gets its own concept — a…",
+  "startedAt": "2026-07-14T13:56:14.111Z",
+  "durationMs": 19461,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list_directory",
+      "summary": "",
+      "paths": [],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "search_knowledge",
+      "summary": "Atlas",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "search_knowledge",
+      "summary": "Hermes gateway",
+      "paths": [
+        "/system/deep-architecture.md",
+        "/system/github-projects.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 4,
+      "tool": "read_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 5,
+      "tool": "patch_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": true
+    }
+  ],
+  "answer": "**Changes made:**\n\n- **Updated** `/system/deep-architecture.md` — Added new \"Atlas Hermes Gateway\" section documenting the gateway configuration (profile: atlas, port 8765, PID 63288, started July 14, 2026), environment variables (`GATEWAY_ALLOW_ALL_USERS=true`, `TELEGRAM_ALLOWED_USERS=8808479511`), Telegram polling mode, and its role as secondary gateway (dispatcher lock held by Echo on port 3000).",
+  "notation": "browse layout → search \"Atlas\" (1) → search \"Hermes gateway\" (2) → read deep-architecture.md → patch deep-architecture.md → ✓"
+}

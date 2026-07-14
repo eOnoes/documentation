@@ -1,5 +1,9 @@
 # Directory Update Log
 
+## 2026-07-14
+
+* **Update**: Added Atlas Hermes Gateway configuration section to [Deep Knowledge System](/system/deep-architecture.md) documenting gateway startup, port 8765, Telegram polling mode, and secondary dispatcher role.
+
 ## 2026-07-13
 
 * **Update**: Patched [Deep Knowledge System](/system/deep-architecture.md) Agent Fleet section to reference [GitHub Workflow Patterns](/system/github-workflows.md).

@@ -9,7 +9,7 @@ tags:
   - knowledge-system
   - multi-agent
   - architecture
-timestamp: '2026-07-13T19:40:01.512Z'
+timestamp: '2026-07-14T13:56:29.908Z'
 ---
 **Deep** (formerly understory) is a multi-agent knowledge system with a shared brain architecture.
 
@@ -81,3 +81,25 @@ See [Eddie's technical setup](/personas/eddie.md) for device IPs and hardware de
 | **Atlas** | Librarian | Inside Deep |
 
 For how these agents collaborate on GitHub tasks (audit patterns, delegation workflows), see [GitHub Workflow Patterns](/system/github-workflows.md).
+
+# Atlas Hermes Gateway
+
+The Atlas Hermes gateway provides Telegram connectivity for the Deep system.
+
+**Started:** July 14, 2026  
+**Command:** `hermes --profile atlas gateway run --replace -v`  
+**PID:** 63288 (background process)
+
+## Configuration
+
+| Setting | Value | Notes |
+|---------|-------|-------|
+| Profile | `atlas` | |
+| Port | 8765 | `HERMES_GATEWAY_PORT=8765` |
+| Allow All Users | `true` | `GATEWAY_ALLOW_ALL_USERS=true` — pairing bypassed |
+| Telegram Allowed Users | `8808479511` | `TELEGRAM_ALLOWED_USERS` |
+| Telegram Mode | Polling | No HTTP port needed |
+
+## Dispatcher Role
+
+Atlas is a **secondary gateway**. The Kanban dispatcher lock is held by Echo gateway (port 3000).

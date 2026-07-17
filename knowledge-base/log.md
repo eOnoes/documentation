@@ -2,6 +2,14 @@
 
 ## 2026-07-17
 
+* **Update**: Patched [Muncher MCP Package Versions](/system/muncher-versions.md) to reference [Local AI Models](/system/local-models.md) as shared runtime context.
+
+* **Update**: Patched [Eddie](/personas/eddie.md) Technical Setup section to document local AI infrastructure and link to [Local AI Models](/system/local-models.md).
+
+* **Update**: Patched [Deep Knowledge System](/system/deep-architecture.md) to link Agent Fleet entries to [Local AI Models](/system/local-models.md) and added context about local inference.
+
+* **Creation**: Created [Local AI Models](/system/local-models.md) documenting Eddie's Bonsai 27B and Qwen 2.5 3B setup with machine specs, file locations, run commands, and performance benchmarks.
+
 * **Update**: Linked [Deep Knowledge System](/system/deep-architecture.md) enrichment pipeline section to new [Muncher MCP Package Versions](/system/muncher-versions.md) document.
 
 * **Creation**: Added [Muncher MCP Package Versions](/system/muncher-versions.md) tracking update pattern and current versions for jcodemunch-mcp, jdocmunch-mcp, and jdatamunch-mcp.

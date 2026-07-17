@@ -9,7 +9,7 @@ tags:
   - knowledge-system
   - multi-agent
   - architecture
-timestamp: '2026-07-17T13:20:50.738Z'
+timestamp: '2026-07-17T20:34:46.670Z'
 ---
 **Deep** (formerly understory) is a multi-agent knowledge system with a shared brain architecture.
 
@@ -69,11 +69,9 @@ See [Eddie's technical setup](/personas/eddie.md) for device IPs and hardware de
 
 # Agent Fleet
 
-### Agent Fleet
-
 | Agent | Role | Platform |
 |-------|------|----------|
-| **Echo** | Supervisor | Local Hermes on PC |
+| **Echo** | Supervisor | Local Hermes on PC (uses [Local AI Models](/system/local-models.md)) |
 | **Tripp** | Supervisor | OpenClaw on VPS |
 | **Cyony** | Supervisor | Hermes on VPS Docker |
 | **Codex** | Builder | OpenAI coding agent |
@@ -81,6 +79,8 @@ See [Eddie's technical setup](/personas/eddie.md) for device IPs and hardware de
 | **Atlas** | Librarian | Inside Deep |
 
 For how these agents collaborate on GitHub tasks (audit patterns, delegation workflows), see [GitHub Workflow Patterns](/system/github-workflows.md).
+
+Local inference runs on Eddie's PC and laptop using Bonsai 27B and Qwen 2.5 3B — see [Local AI Models](/system/local-models.md) for model specs, performance, and run commands.
 
 # Atlas Hermes Gateway
 

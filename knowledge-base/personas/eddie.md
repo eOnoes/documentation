@@ -9,7 +9,7 @@ tags:
   - non-technical
   - cost-conscious
   - github
-timestamp: '2026-07-13T19:39:19.273Z'
+timestamp: '2026-07-17T20:34:46.687Z'
 ---
 Eddie is a visionary based in Memphis, TN. He is not a coder and delegates all technical work to his AI agents, whom he calls his "fam." He works at **Nucor Steel Memphis** — a steel mill that melts scrap metal in an electric arc furnace and rolls it into new steel shapes. His projects HTOL, MOL.Base, and QOL are work-related tools.
 
@@ -29,27 +29,20 @@ Eddie delegates tasks to his AI agents rather than doing technical work himself.
 
 # Technical Setup
 
-Eddie uses **Tailscale for all networking** across his devices.
+Eddie runs a multi-machine AI setup connected via Tailscale mesh VPN.
 
-## Primary Workstation
-- **OS:** Windows PC
-- **Tailscale IP:** 100.72.250.65
-- **GPU:** NVIDIA RTX 4070 12GB
-- **RAM:** 64GB DDR5
-- **CPU:** AMD Ryzen 9 7900X
+**Local AI Infrastructure:**
+- **PC (Primary):** RTX 4070 12GB, 64GB RAM, Ryzen 9 7900X — runs Bonsai 27B and Qwen 2.5 3B
+- **Laptop (Secondary):** RX 6800M 12GB, 16GB RAM, Ryzen 9 6900HX — Tailscale IP 100.119.162.99
+- **Models:** Bonsai 27B (primary), Qwen 2.5 3B (fast backup), Fish Speech (TTS at 100.72.250.65:8880)
+- **Full specs and run commands:** [Local AI Models](/system/local-models.md)
 
-## Laptop
-- **Model:** ASUS ROG G513QY
-- **Tailscale IP:** 100.119.162.99
+**Networking:**
+- All devices on Tailscale (WireGuard protocol, <1ms overhead)
+- PC ↔ Laptop latency: 4-47ms measured
+- Laptop local LLM: 55 tok/s with near-zero network penalty
 
-## VPS
-- **Public IP:** 2.24.118.123
-- **Tailscale IP:** 100.85.111.32
-
-## Phone
-- **OS:** Android (not iPhone)
-- **Tailscale IP:** 100.78.100.31
-- **Primary App:** Telegram
+He delegates all technical work to his AI agents (the "fam") and self-configures all bot tokens — agents never handle credentials.
 
 # GitHub Organization
 

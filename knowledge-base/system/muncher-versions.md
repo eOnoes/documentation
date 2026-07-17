@@ -6,7 +6,7 @@ tags:
   - munchers
   - mcp
   - versions
-timestamp: '2026-07-17T13:20:44.838Z'
+timestamp: '2026-07-17T20:34:46.700Z'
 ---
 Local token munchers are installed via pip in user site-packages (normal site-packages not writeable).
 
@@ -31,3 +31,13 @@ pip install --upgrade jcodemunch-mcp jdocmunch-mcp jdatamunch-mcp
 - **jdatamunch-mcp** — Extracts symbols from data files
 
 These munchers feed the [Enrichment Pipeline](/system/deep-architecture.md) in the Deep knowledge system, allowing local preprocessing before cloud token processing.
+
+# Roles
+
+- **jcodemunch-mcp** — Extracts symbols from code
+- **jdocmunch-mcp** — Extracts symbols from documentation
+- **jdatamunch-mcp** — Extracts symbols from data files
+
+These munchers feed the [Enrichment Pipeline](/system/deep-architecture.md) in the Deep knowledge system, allowing local preprocessing before cloud token processing.
+
+**Runtime context:** Munchers run locally on Eddie's machines alongside [Local AI Models](/system/local-models.md) (Bonsai 27B, Qwen 2.5 3B), sharing the same GPU/CPU resources.

@@ -1,5 +1,11 @@
 # Directory Update Log
 
+## 2026-07-17
+
+* **Update**: Linked [Deep Knowledge System](/system/deep-architecture.md) enrichment pipeline section to new [Muncher MCP Package Versions](/system/muncher-versions.md) document.
+
+* **Creation**: Added [Muncher MCP Package Versions](/system/muncher-versions.md) tracking update pattern and current versions for jcodemunch-mcp, jdocmunch-mcp, and jdatamunch-mcp.
+
 ## 2026-07-14
 
 * **Update**: Added Atlas Hermes Gateway configuration section to [Deep Knowledge System](/system/deep-architecture.md) documenting gateway startup, port 8765, Telegram polling mode, and secondary dispatcher role.

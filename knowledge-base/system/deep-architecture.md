@@ -9,7 +9,7 @@ tags:
   - knowledge-system
   - multi-agent
   - architecture
-timestamp: '2026-07-14T13:56:29.908Z'
+timestamp: '2026-07-17T13:20:50.738Z'
 ---
 **Deep** (formerly understory) is a multi-agent knowledge system with a shared brain architecture.
 
@@ -103,3 +103,13 @@ The Atlas Hermes gateway provides Telegram connectivity for the Deep system.
 ## Dispatcher Role
 
 Atlas is a **secondary gateway**. The Kanban dispatcher lock is held by Echo gateway (port 3000).
+
+# Enrichment Pipeline
+
+Built to reduce Atlas cloud token costs by 80-95%.
+
+- **How it works:** Local token munchers extract symbols; cloud brain only processes summaries
+- **Munchers:** `jcodemunch-mcp` (code), `jdocmunch-mcp` (docs)
+- **Muncher venv:** `D:/Documentation/munch-venv/`
+- **Flow:** Agent report → MCP server → Router → Muncher (LOCAL) → Enricher → Deep KB
+- **Versions & updates:** See [Muncher MCP Package Versions](/system/muncher-versions.md)

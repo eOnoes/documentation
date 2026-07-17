@@ -1,0 +1,64 @@
+{
+  "id": "mroyuksd-kkyis",
+  "kind": "mutation",
+  "input": "Persist the following knowledge into the knowledge base. First search for related or owning concepts. If this is an attribute or detail of an existing concept, patch it into that concept rather than creating a new one. Only a distinct stand-alone entity or substantial topic gets its own concept — a…",
+  "startedAt": "2026-07-17T13:20:29.516Z",
+  "durationMs": 25457,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "list_directory",
+      "summary": "",
+      "paths": [],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "search_knowledge",
+      "summary": "jcodemunch jdocmunch jdatamunch",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "search_knowledge",
+      "summary": "Muncher MCP",
+      "paths": [
+        "/system/deep-architecture.md",
+        "/system/github-workflows.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 4,
+      "tool": "read_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 5,
+      "tool": "write_concept",
+      "summary": "/system/muncher-versions.md",
+      "paths": [
+        "/system/muncher-versions.md"
+      ],
+      "write": true
+    },
+    {
+      "seq": 6,
+      "tool": "patch_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": true
+    }
+  ],
+  "answer": "**Changes made:**\n\n1. **Created** `/system/muncher-versions.md` — New concept documenting the pip update pattern and current version numbers for the three muncher MCP packages (jcodemunch-mcp, jdocmunch-mcp, jdatamunch-mcp) as of 2026-07-17.\n\n2. **Patched** `/system/deep-architecture.md` — Added a reference in the Enrichment Pipeline section linking to the new muncher versions document, wiring the new concept into the existing architecture documentation.",
+  "notation": "browse layout → search \"jcodemunch jdocmunch jdatamun…\" (1) → search \"Muncher MCP\" (2) → read deep-architecture.md → write muncher-versions.md → patch deep-architecture.md → ✓"
+}

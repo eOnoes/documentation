@@ -1,0 +1,64 @@
+{
+  "id": "mrqvyg7i-kqn82",
+  "kind": "mutation",
+  "input": "Persist the following knowledge into the knowledge base. First search for related or owning concepts. If this is an attribute or detail of an existing concept, patch it into that concept rather than creating a new one. Only a distinct stand-alone entity or substantial topic gets its own concept — a…",
+  "startedAt": "2026-07-18T21:34:38.687Z",
+  "durationMs": 50479,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "read_concept",
+      "summary": "/system/local-models.md",
+      "paths": [
+        "/system/local-models.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "search_knowledge",
+      "summary": "model LLM identity",
+      "paths": [
+        "/system/local-models.md",
+        "/system/tripp-brand.md",
+        "/system/deep-architecture.md",
+        "/personas/eddie.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "search_knowledge",
+      "summary": "Tripp Harness",
+      "paths": [
+        "/system/tripp-brand.md",
+        "/personas/eddie.md",
+        "/system/deep-architecture.md",
+        "/system/github-projects.md",
+        "/system/github-workflows.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 4,
+      "tool": "write_concept",
+      "summary": "/system/model-identity-confusion.md",
+      "paths": [
+        "/system/model-identity-confusion.md"
+      ],
+      "write": true
+    },
+    {
+      "seq": 5,
+      "tool": "patch_concept",
+      "summary": "/system/local-models.md",
+      "paths": [
+        "/system/local-models.md"
+      ],
+      "write": true
+    }
+  ],
+  "answer": "## Changes Made\n\n**Created:**\n- `/system/model-identity-confusion.md` — New concept documenting the model identity confusion pattern observed in small/cheap LLMs, the root cause (training on synthetic data), the identity anchor prompt solution adopted from Cline, and architecture patterns across different platforms.\n\n**Updated:**\n- `/system/local-models.md` — Added link to the new concept in the Related section, since Eddie's local Qwen 2.5 3B setup is among the models that may exhibit this beh…",
+  "notation": "read local-models.md → search \"model LLM identity\" (5) → search \"Tripp Harness\" (5) → write model-identity-confusion.md → patch local-models.md → ✓"
+}

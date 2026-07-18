@@ -1,5 +1,19 @@
 # Directory Update Log
 
+## 2026-07-18
+
+* **Update**: Linked [Bun Hot Reload Cache Pitfall](/system/bun-cache-pitfall.md) from [DeepSeek API URL](/system/deepseek-api-url.md) related section.
+
+* **Creation**: Added [Bun Hot Reload Cache Pitfall](/system/bun-cache-pitfall.md) documenting transpiler cache invalidation requirement during development.
+
+* **Update**: Linked [DeepSeek API URL Requires /v1 Path](/system/deepseek-api-url.md) from [Model Identity Confusion in Small LLMs](/system/model-identity-confusion.md) as related debugging lesson from same session.
+
+* **Creation**: Added [DeepSeek API URL Requires /v1 Path](/system/deepseek-api-url.md) documenting Tripp.Harness lesson about DeepSeek endpoint routing and 401 errors.
+
+* **Update**: Linked [Local AI Models](/system/local-models.md) to new [Model Identity Confusion](/system/model-identity-confusion.md) concept in Related section.
+
+* **Creation**: Added [Model Identity Confusion in Small LLMs](/system/model-identity-confusion.md) documenting identity anchor prompt pattern for small models trained on synthetic data.
+
 ## 2026-07-17
 
 * **Update**: Patched [Muncher MCP Package Versions](/system/muncher-versions.md) to reference [Local AI Models](/system/local-models.md) as shared runtime context.

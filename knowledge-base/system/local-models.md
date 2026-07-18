@@ -9,7 +9,7 @@ tags:
   - local-inference
   - bonsai
   - llama-cpp
-timestamp: '2026-07-17T20:34:25.940Z'
+timestamp: '2026-07-18T21:35:24.346Z'
 ---
 Eddie runs local LLMs on two machines. After extensive benchmarking, all other models were removed and the setup consolidated to TWO models plus TTS.
 
@@ -171,3 +171,10 @@ When an agent needs local inference:
 - [Deep Knowledge System](/system/deep-architecture.md) — Multi-agent architecture that uses these local models
 - [Eddie](/personas/eddie.md) — User who owns and operates this setup
 - [Muncher MCP Package Versions](/system/muncher-versions.md) — Local token munchers that preprocess before cloud inference
+
+# Related
+
+- [Deep Knowledge System](/system/deep-architecture.md) — Multi-agent architecture that uses these local models
+- [Eddie](/personas/eddie.md) — User who owns and operates this setup
+- [Muncher MCP Package Versions](/system/muncher-versions.md) — Local token munchers that preprocess before cloud inference
+- [Model Identity Confusion in Small LLMs](/system/model-identity-confusion.md) — Pattern for handling identity misreporting in small models like Qwen

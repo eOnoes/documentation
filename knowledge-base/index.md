@@ -9,4 +9,5 @@ okf_version: "0.1"
 ## Memory Segments
 
 * [personas](personas/) - 1 concept (Persona): Eddie
+* [research](research/) - 1 concept (Research): VSCode AI Coding Features Comparison
 * [system](system/) - 9 concepts (Brand Identity, System Architecture): Bun Hot Reload Cache Pitfall, Deep Knowledge System, DeepSeek API URL Requires /v1 Path, …

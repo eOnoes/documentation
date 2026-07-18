@@ -9,7 +9,7 @@ tags:
   - knowledge-system
   - multi-agent
   - architecture
-timestamp: '2026-07-17T20:34:46.670Z'
+timestamp: '2026-07-18T21:46:41.094Z'
 ---
 **Deep** (formerly understory) is a multi-agent knowledge system with a shared brain architecture.
 
@@ -113,3 +113,9 @@ Built to reduce Atlas cloud token costs by 80-95%.
 - **Muncher venv:** `D:/Documentation/munch-venv/`
 - **Flow:** Agent report → MCP server → Router → Muncher (LOCAL) → Enricher → Deep KB
 - **Versions & updates:** See [Muncher MCP Package Versions](/system/muncher-versions.md)
+
+# Related
+
+- [VSCode AI Coding Features Comparison](/research/vscode-ai-features-comparison.md) — Mid-2026 competitive analysis identifying critical gaps (MCP support, codebase semantic search) and opportunities for Tripp.Harness
+- [Muncher MCP Package Versions](/system/muncher-versions.md) — Local MCP servers already in use for token preprocessing
+- [Model Identity Confusion in Small LLMs](/system/model-identity-confusion.md) — Tripp.Harness pattern for handling model identity issues

@@ -2,6 +2,14 @@
 
 ## 2026-07-18
 
+* **Update**: Linked [Model Identity Confusion in Small LLMs](/system/model-identity-confusion.md) to [VSCode AI Coding Features Comparison](/research/vscode-ai-features-comparison.md) for broader platform context.
+
+* **Update**: Linked [Muncher MCP Package Versions](/system/muncher-versions.md) to [VSCode AI Coding Features Comparison](/research/vscode-ai-features-comparison.md) noting MCP is now industry standard.
+
+* **Update**: Linked [Deep Knowledge System](/system/deep-architecture.md) to new [VSCode AI Coding Features Comparison](/research/vscode-ai-features-comparison.md) research documenting critical feature gaps.
+
+* **Creation**: Added [VSCode AI Coding Features Comparison](/research/vscode-ai-features-comparison.md) — mid-2026 competitive analysis of Copilot, Cursor, and Windsurf with prioritized feature gaps for Tripp.Harness.
+
 * **Update**: Linked [Bun Hot Reload Cache Pitfall](/system/bun-cache-pitfall.md) from [DeepSeek API URL](/system/deepseek-api-url.md) related section.
 
 * **Creation**: Added [Bun Hot Reload Cache Pitfall](/system/bun-cache-pitfall.md) documenting transpiler cache invalidation requirement during development.

@@ -10,7 +10,7 @@ tags:
   - prompt-engineering
   - tripp-harness
   - cline
-timestamp: '2026-07-18T21:35:49.879Z'
+timestamp: '2026-07-18T21:46:41.115Z'
 ---
 ## Problem
 
@@ -71,3 +71,4 @@ This pattern applies to any platform routing to small/open models trained on syn
 - [Local AI Models](/system/local-models.md) — Eddie's local setup includes Qwen 2.5 3B, which may exhibit this behavior
 - [Deep Knowledge System](/system/deep-architecture.md) — Multi-agent architecture that routes to various models
 - [DeepSeek API URL Requires /v1 Path](/system/deepseek-api-url.md) — Another Tripp.Harness lesson from the same debugging session (URL routing vs auth errors)
+- [VSCode AI Coding Features Comparison](/research/vscode-ai-features-comparison.md) — Broader competitive analysis including how different platforms handle model routing and identity

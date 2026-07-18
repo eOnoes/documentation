@@ -1,0 +1,115 @@
+{
+  "id": "mrqwycxd-upudt",
+  "kind": "query",
+  "input": "What is Tripp.Harness? What is the Identity Anchor fix? What is known about its architecture, providers, MCP integration, and CLI wrapper plans?",
+  "startedAt": "2026-07-18T22:02:57.835Z",
+  "durationMs": 26694,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "search_knowledge",
+      "summary": "Identity Anchor",
+      "paths": [
+        "/system/model-identity-confusion.md",
+        "/system/tripp-brand.md",
+        "/system/deepseek-api-url.md",
+        "/research/vscode-ai-features-comparison.md",
+        "/system/bun-cache-pitfall.md",
+        "/system/deep-architecture.md",
+        "/system/local-models.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "search_knowledge",
+      "summary": "architecture",
+      "paths": [
+        "/system/deep-architecture.md",
+        "/system/github-projects.md",
+        "/system/github-workflows.md",
+        "/system/local-models.md",
+        "/system/model-identity-confusion.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "search_knowledge",
+      "summary": "Tripp.Harness",
+      "paths": [
+        "/research/vscode-ai-features-comparison.md",
+        "/system/bun-cache-pitfall.md",
+        "/system/deepseek-api-url.md",
+        "/system/deep-architecture.md",
+        "/system/model-identity-confusion.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 4,
+      "tool": "read_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 5,
+      "tool": "read_concept",
+      "summary": "/system/muncher-versions.md",
+      "paths": [
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 6,
+      "tool": "read_concept",
+      "summary": "/system/model-identity-confusion.md",
+      "paths": [
+        "/system/model-identity-confusion.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 7,
+      "tool": "read_concept",
+      "summary": "/research/vscode-ai-features-comparison.md",
+      "paths": [
+        "/research/vscode-ai-features-comparison.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 8,
+      "tool": "search_knowledge",
+      "summary": "CLI terminal wrapper delivery",
+      "paths": [
+        "/system/model-identity-confusion.md",
+        "/research/vscode-ai-features-comparison.md",
+        "/system/github-projects.md",
+        "/personas/eddie.md",
+        "/system/github-workflows.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 9,
+      "tool": "search_knowledge",
+      "summary": "provider routing multi-model",
+      "paths": [
+        "/research/vscode-ai-features-comparison.md",
+        "/system/deepseek-api-url.md",
+        "/system/model-identity-confusion.md"
+      ],
+      "write": false
+    }
+  ],
+  "answer": "Based on the knowledge base, here's what is known about Tripp.Harness:\n\n## What is Tripp.Harness?\n\nTripp.Harness is an **AI coding agent harness/framework** being developed as part of Eddie's multi-agent ecosystem. It's designed to compete with GitHub Copilot, Cursor, and Windsurf by providing a unified interface for multiple LLM providers with advanced tooling and context management capabilities.\n\nThe harness is integrated with the **Deep Knowledge System** (formerly \"understory\") — a multi-ag…",
+  "notation": "search \"Identity Anchor\" (7) → search \"architecture\" (6) → search \"Tripp.Harness\" (6) → read deep-architecture.md → read muncher-versions.md → read model-identity-confusion.md → read vscode-ai-features-comparison.md → search \"CLI terminal wrapper delivery\" (6) → search \"provider routing multi-model\" (3) → ✓"
+}

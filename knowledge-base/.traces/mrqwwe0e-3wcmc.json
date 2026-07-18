@@ -1,0 +1,98 @@
+{
+  "id": "mrqwwe0e-3wcmc",
+  "kind": "query",
+  "input": "What is the Tripp.Harness repository? Where is it located? What is its structure?",
+  "startedAt": "2026-07-18T22:01:22.966Z",
+  "durationMs": 29656,
+  "steps": [
+    {
+      "seq": 1,
+      "tool": "search_knowledge",
+      "summary": "Tripp.Harness repository",
+      "paths": [
+        "/research/vscode-ai-features-comparison.md",
+        "/system/bun-cache-pitfall.md",
+        "/system/deepseek-api-url.md",
+        "/personas/eddie.md",
+        "/system/deep-architecture.md",
+        "/system/github-projects.md",
+        "/system/model-identity-confusion.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 2,
+      "tool": "read_concept",
+      "summary": "/system/github-projects.md",
+      "paths": [
+        "/system/github-projects.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 3,
+      "tool": "read_concept",
+      "summary": "/system/deep-architecture.md",
+      "paths": [
+        "/system/deep-architecture.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 4,
+      "tool": "search_knowledge",
+      "summary": "Tripp.Harness GitHub repository location",
+      "paths": [
+        "/system/github-workflows.md",
+        "/system/github-projects.md",
+        "/research/vscode-ai-features-comparison.md",
+        "/personas/eddie.md",
+        "/system/bun-cache-pitfall.md",
+        "/system/deepseek-api-url.md",
+        "/system/local-models.md",
+        "/system/deep-architecture.md",
+        "/system/model-identity-confusion.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 5,
+      "tool": "search_knowledge",
+      "summary": "Tripp.Harness codebase structure",
+      "paths": [
+        "/research/vscode-ai-features-comparison.md",
+        "/system/bun-cache-pitfall.md",
+        "/system/deepseek-api-url.md",
+        "/system/deep-architecture.md",
+        "/personas/eddie.md",
+        "/system/github-projects.md",
+        "/system/local-models.md",
+        "/system/model-identity-confusion.md",
+        "/system/muncher-versions.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 6,
+      "tool": "read_concept",
+      "summary": "/research/vscode-ai-features-comparison.md",
+      "paths": [
+        "/research/vscode-ai-features-comparison.md"
+      ],
+      "write": false
+    },
+    {
+      "seq": 7,
+      "tool": "read_concept",
+      "summary": "/personas/eddie.md",
+      "paths": [
+        "/personas/eddie.md"
+      ],
+      "write": false
+    }
+  ],
+  "answer": "Based on my search through the knowledge base, I need to be direct: **Tripp.Harness is referenced frequently but not documented as a standalone concept.** The knowledge base mentions it in passing across several documents, but there's no dedicated file explaining what it is, where it lives, or its structure.\n\n## What I Can Tell You (from scattered references)\n\n**What it is:**\n- A coding agent harness/framework being developed for Eddie's agent ecosystem\n- Has a Plan/Build mode architecture (not…",
+  "notation": "search \"Tripp.Harness repository\" (8) → read github-projects.md → read deep-architecture.md → search \"Tripp.Harness GitHub reposito…\" (10) → search \"Tripp.Harness codebase struct…\" (9) → read vscode-ai-features-comparison.md → read eddie.md → ✓"
+}
